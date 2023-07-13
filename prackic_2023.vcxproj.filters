@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков\AVL">
+      <UniqueIdentifier>{9112e9d0-8db8-4605-bd11-b0c12a6c2e08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Seek">
+      <UniqueIdentifier>{195e3622-7fb3-4244-b5ec-99252d893899}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\String20">
+      <UniqueIdentifier>{25f967b5-ad5d-4374-893b-3780f44c16e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Student">
+      <UniqueIdentifier>{b73213bf-d1fd-4b3d-8815-9c9e510708b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Dynamic_list">
+      <UniqueIdentifier>{fa100093-f58f-4ee0-bf13-45c07dd20e0b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AVL_tree.cpp">
+      <Filter>Файлы заголовков\AVL</Filter>
+    </ClCompile>
+    <ClCompile Include="Dynamic_list_2.cpp">
+      <Filter>Файлы заголовков\Dynamic_list</Filter>
+    </ClCompile>
+    <ClCompile Include="Student.cpp">
+      <Filter>Файлы заголовков\Student</Filter>
+    </ClCompile>
+    <ClCompile Include="String20.cpp">
+      <Filter>Файлы заголовков\String20</Filter>
+    </ClCompile>
+    <ClCompile Include="SeekTree.cpp">
+      <Filter>Файлы заголовков\Seek</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AVL_tree.h">
+      <Filter>Файлы заголовков\AVL</Filter>
+    </ClInclude>
+    <ClInclude Include="Dynamic_list_2.h">
+      <Filter>Файлы заголовков\Dynamic_list</Filter>
+    </ClInclude>
+    <ClInclude Include="Student.h">
+      <Filter>Файлы заголовков\Student</Filter>
+    </ClInclude>
+    <ClInclude Include="String20.h">
+      <Filter>Файлы заголовков\String20</Filter>
+    </ClInclude>
+    <ClInclude Include="SeekTree.h">
+      <Filter>Файлы заголовков\Seek</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

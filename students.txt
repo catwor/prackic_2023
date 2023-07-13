@@ -1,0 +1,301 @@
+Dobe
+Aang
+5 4 4 4 4
+Ivan
+Ivanov
+5 3 4 5 5
+Alex
+Gekko
+5 5 5 3 4
+Stepan
+Stepanov
+4 4 4 4 4
+Alexey
+Alexeev
+5 5 5 5 5
+Petr
+Petrov
+4 4 4 4 4
+Alex
+Johnson
+4 3 5 2 4
+Emily
+Smith
+5 4 3 5 4
+Daniel
+Williams
+5 5 5 5 5
+Sophia
+Brown
+4 5 3 4 5
+Michael
+Jones
+2 4 3 5 4
+Olivia
+Davis
+4 3 5 2 4
+William
+Miller
+5 4 3 5 4
+Ava
+Wilson
+3 2 4 3 5
+James
+Taylor
+4 5 3 4 5
+Emma
+Anderson
+2 4 3 5 4
+Benjamin
+Thomas
+4 3 5 2 4
+Isabella
+Martinez
+5 4 3 5 4
+Ethan
+Robinson
+3 2 4 3 5
+Mia
+Clark
+4 5 3 4 5
+Jacob
+Rodriguez
+2 4 3 5 4
+Abigail
+Lee
+4 3 5 2 4
+Alexander
+Hall
+5 4 3 5 4
+Sophie
+Gonzalez
+3 2 4 3 5
+Henry
+Lopez
+5 5 5 5 5
+Charlotte
+Young
+2 4 3 5 4
+David
+Harris
+4 3 5 2 4
+Victoria
+King
+5 4 3 5 4
+Joseph
+Baker
+3 2 4 3 5
+Grace
+Nelson
+4 5 3 4 5
+Andrew
+Moore
+2 4 3 5 4
+Chloe
+Campbell
+4 3 5 2 4
+Matthew
+Mitchell
+5 4 3 5 4
+Madison
+Roberts
+3 2 4 3 5
+Liam
+Turner
+4 5 3 4 5
+Samantha
+Phillips
+2 4 3 5 4
+Jackson
+Martin
+4 3 5 2 4
+Lily
+Flores
+5 4 3 5 4
+Aiden
+Garcia
+3 2 4 3 5
+Natalie
+Hill
+4 5 3 4 5
+Ella
+Adams
+2 4 3 5 4
+Christopher
+Green
+4 3 5 2 4
+Grace
+Robinson
+5 4 3 5 4
+Sarah
+Walker
+3 2 4 3 5
+Dylan
+Anderson
+4 5 3 4 5
+Avery
+Wright
+2 4 3 5 4
+Scarlett
+Hall
+4 3 5 2 4
+James
+Lewis
+5 4 3 5 4
+Zoe
+Young
+3 2 4 3 5
+Daniel
+Scott
+4 5 3 4 5
+Evelyn
+King
+2 4 3 5 4
+Anthony
+White
+4 3 5 2 4
+Mila
+Baker
+5 4 3 5 4
+4 4 4 4 4
+Alex
+Johnson
+4 3 5 2 4
+Emily
+Smith
+5 4 3 5 4
+Daniel
+Williams
+3 2 4 3 5
+Sophia
+Brown
+4 5 3 4 5
+Michael
+Jones
+2 4 3 5 4
+Olivia
+Davis
+4 3 5 2 4
+William
+Miller
+5 4 3 5 4
+Ava
+Wilson
+3 2 4 3 5
+James
+Taylor
+4 5 3 4 5
+Emma
+Anderson
+2 4 3 5 4
+Benjamin
+Thomas
+4 3 5 2 4
+Isabella
+Martinez
+5 4 3 5 4
+Ethan
+Robinson
+3 2 4 3 5
+Mia
+Clark
+4 5 3 4 5
+Jacob
+Rodriguez
+2 4 3 5 4
+Abigail
+Lee
+4 3 5 2 4
+Alexander
+Hall
+5 4 3 5 4
+Sophie
+Gonzalez
+3 2 4 3 5
+Henry
+Lopez
+4 5 3 4 5
+Charlotte
+Young
+2 4 3 5 4
+David
+Harris
+4 3 5 2 4
+Victoria
+King
+5 4 3 5 4
+Joseph
+Baker
+3 2 4 3 5
+Grace
+Nelson
+4 5 3 4 5
+Andrew
+Moore
+2 4 3 5 4
+Chloe
+Campbell
+4 3 5 2 4
+Matthew
+Mitchell
+5 4 3 5 4
+Madison
+Roberts
+3 2 4 3 5
+Liam
+Turner
+4 5 3 4 5
+Samantha
+Phillips
+2 4 3 5 4
+Jackson
+Martin
+4 3 5 2 4
+Lily
+Flores
+5 4 3 5 4
+Aiden
+Garcia
+3 2 4 3 5
+Natalie
+Hill
+4 5 3 4 5
+Ella
+Adams
+2 4 3 5 4
+Christopher
+Green
+4 3 5 2 4
+Grace
+Robinson
+5 4 3 5 4
+Sarah
+Walker
+3 2 4 3 5
+Dylan
+Anderson
+4 5 3 4 5
+Avery
+Wright
+2 4 3 5 4
+Scarlett
+Hall
+4 3 5 2 4
+James
+Lewis
+5 4 3 5 4
+Zoe
+Young
+3 2 4 3 5
+Daniel
+Scott
+4 5 3 4 5
+Evelyn
+King
+2 4 3 5 4
+Anthony
+White
+4 3 5 2 4
+Mila
+Baker
+5 4 3 5 4
