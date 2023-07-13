@@ -48,6 +48,9 @@
     <ClCompile Include="Source.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="MyForm.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AVL_tree.h">
@@ -64,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="SeekTree.h">
       <Filter>Файлы заголовков\Seek</Filter>
+    </ClInclude>
+    <ClInclude Include="MyForm.h">
+      <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

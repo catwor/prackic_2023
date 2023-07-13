@@ -1,6 +1,12 @@
-#include <iostream>
+#include "Form1.h"
 
-int main() {
-	std::cin.get();
-	return 0;
+#include <Windows.h>
+
+using namespace prackic2023;
+
+int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
+    Application::EnableVisualStyles();
+    Application::SetCompatibleTextRenderingDefault(false);
+    Application::Run(gcnew Form1);
+    return 0;
 }

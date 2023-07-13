@@ -114,6 +114,7 @@
   <ItemGroup>
     <ClCompile Include="AVL_tree.cpp" />
     <ClCompile Include="Dynamic_list_2.cpp" />
+    <ClCompile Include="Form1.cpp" />
     <ClCompile Include="SeekTree.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="String20.cpp" />
@@ -122,9 +123,24 @@
   <ItemGroup>
     <ClInclude Include="AVL_tree.h" />
     <ClInclude Include="Dynamic_list_2.h" />
+    <ClInclude Include="Form1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="SeekTree.h" />
     <ClInclude Include="String20.h" />
     <ClInclude Include="Student.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
