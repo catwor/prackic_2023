@@ -10,12 +10,12 @@ namespace prackic2023 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для Form1
+	/// Сводка для TopSoft
 	/// </summary>
-	public ref class Form1 : public System::Windows::Forms::Form
+	public ref class TopSoft : public System::Windows::Forms::Form
 	{
 	public:
-		Form1(void)
+		TopSoft(void)
 		{
 			InitializeComponent();
 			//
@@ -27,7 +27,7 @@ namespace prackic2023 {
 		/// <summary>
 		/// Освободить все используемые ресурсы.
 		/// </summary>
-		~Form1()
+		~TopSoft()
 		{
 			if (components)
 			{
@@ -201,7 +201,7 @@ namespace prackic2023 {
 			this->ficha_1->TabIndex = 9;
 			this->ficha_1->Text = L"button1";
 			this->ficha_1->UseVisualStyleBackColor = true;
-			this->ficha_1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+			this->ficha_1->Click += gcnew System::EventHandler(this, &TopSoft::button1_Click);
 			// 
 			// text_name
 			// 
@@ -212,7 +212,7 @@ namespace prackic2023 {
 			this->text_name->Size = System::Drawing::Size(171, 25);
 			this->text_name->TabIndex = 14;
 			this->text_name->Text = L"Name";
-			this->text_name->TextChanged += gcnew System::EventHandler(this, &Form1::textBox2_TextChanged_1);
+			this->text_name->TextChanged += gcnew System::EventHandler(this, &TopSoft::textBox2_TextChanged_1);
 			// 
 			// but_fix
 			// 
@@ -222,7 +222,7 @@ namespace prackic2023 {
 			this->but_fix->TabIndex = 16;
 			this->but_fix->Text = L"fix";
 			this->but_fix->UseVisualStyleBackColor = true;
-			this->but_fix->Click += gcnew System::EventHandler(this, &Form1::button5_Click);
+			this->but_fix->Click += gcnew System::EventHandler(this, &TopSoft::button5_Click);
 			// 
 			// list
 			// 
@@ -233,7 +233,7 @@ namespace prackic2023 {
 			this->list->Size = System::Drawing::Size(198, 212);
 			this->list->TabIndex = 23;
 			this->list->UseCompatibleStateImageBehavior = false;
-			this->list->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::listView1_SelectedIndexChanged);
+			this->list->SelectedIndexChanged += gcnew System::EventHandler(this, &TopSoft::listView1_SelectedIndexChanged);
 			// 
 			// ficha_2
 			// 
@@ -244,7 +244,7 @@ namespace prackic2023 {
 			this->ficha_2->TabIndex = 28;
 			this->ficha_2->Text = L"button2";
 			this->ficha_2->UseVisualStyleBackColor = true;
-			this->ficha_2->Click += gcnew System::EventHandler(this, &Form1::button2_Click_1);
+			this->ficha_2->Click += gcnew System::EventHandler(this, &TopSoft::button2_Click_1);
 			// 
 			// ficha_3
 			// 
@@ -255,7 +255,7 @@ namespace prackic2023 {
 			this->ficha_3->TabIndex = 29;
 			this->ficha_3->Text = L"button3";
 			this->ficha_3->UseVisualStyleBackColor = true;
-			this->ficha_3->Click += gcnew System::EventHandler(this, &Form1::button3_Click);
+			this->ficha_3->Click += gcnew System::EventHandler(this, &TopSoft::button3_Click);
 			// 
 			// ficha_4
 			// 
@@ -266,7 +266,7 @@ namespace prackic2023 {
 			this->ficha_4->TabIndex = 30;
 			this->ficha_4->Text = L"button4";
 			this->ficha_4->UseVisualStyleBackColor = true;
-			this->ficha_4->Click += gcnew System::EventHandler(this, &Form1::button4_Click);
+			this->ficha_4->Click += gcnew System::EventHandler(this, &TopSoft::button4_Click);
 			// 
 			// but_add
 			// 
@@ -276,7 +276,7 @@ namespace prackic2023 {
 			this->but_add->TabIndex = 31;
 			this->but_add->Text = L"add";
 			this->but_add->UseVisualStyleBackColor = true;
-			this->but_add->Click += gcnew System::EventHandler(this, &Form1::but_add_Click);
+			this->but_add->Click += gcnew System::EventHandler(this, &TopSoft::but_add_Click);
 			// 
 			// text_surename
 			// 
@@ -287,57 +287,62 @@ namespace prackic2023 {
 			this->text_surename->Size = System::Drawing::Size(171, 25);
 			this->text_surename->TabIndex = 32;
 			this->text_surename->Text = L"Surename";
-			this->text_surename->TextChanged += gcnew System::EventHandler(this, &Form1::textBox3_TextChanged_1);
+			this->text_surename->TextChanged += gcnew System::EventHandler(this, &TopSoft::textBox3_TextChanged_1);
 			// 
 			// mark_1
 			// 
+			this->mark_1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->mark_1->FormattingEnabled = true;
 			this->mark_1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2", L"3", L"4", L"5" });
 			this->mark_1->Location = System::Drawing::Point(33, 128);
 			this->mark_1->Name = L"mark_1";
 			this->mark_1->Size = System::Drawing::Size(80, 24);
 			this->mark_1->TabIndex = 37;
-			this->mark_1->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::comboBox1_SelectedIndexChanged);
+			this->mark_1->SelectedIndexChanged += gcnew System::EventHandler(this, &TopSoft::comboBox1_SelectedIndexChanged);
 			// 
 			// mark_2
 			// 
+			this->mark_2->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->mark_2->FormattingEnabled = true;
 			this->mark_2->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2", L"3", L"4", L"5" });
 			this->mark_2->Location = System::Drawing::Point(33, 175);
 			this->mark_2->Name = L"mark_2";
 			this->mark_2->Size = System::Drawing::Size(80, 24);
 			this->mark_2->TabIndex = 38;
-			this->mark_2->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::comboBox2_SelectedIndexChanged);
+			this->mark_2->SelectedIndexChanged += gcnew System::EventHandler(this, &TopSoft::comboBox2_SelectedIndexChanged);
 			// 
 			// mark_3
 			// 
+			this->mark_3->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->mark_3->FormattingEnabled = true;
 			this->mark_3->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2", L"3", L"4", L"5" });
 			this->mark_3->Location = System::Drawing::Point(33, 226);
 			this->mark_3->Name = L"mark_3";
 			this->mark_3->Size = System::Drawing::Size(80, 24);
 			this->mark_3->TabIndex = 39;
-			this->mark_3->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::comboBox3_SelectedIndexChanged);
+			this->mark_3->SelectedIndexChanged += gcnew System::EventHandler(this, &TopSoft::comboBox3_SelectedIndexChanged);
 			// 
 			// mark_4
 			// 
+			this->mark_4->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->mark_4->FormattingEnabled = true;
 			this->mark_4->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2", L"3", L"4", L"5" });
 			this->mark_4->Location = System::Drawing::Point(33, 271);
 			this->mark_4->Name = L"mark_4";
 			this->mark_4->Size = System::Drawing::Size(80, 24);
 			this->mark_4->TabIndex = 40;
-			this->mark_4->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::comboBox4_SelectedIndexChanged);
+			this->mark_4->SelectedIndexChanged += gcnew System::EventHandler(this, &TopSoft::comboBox4_SelectedIndexChanged);
 			// 
 			// mark_5
 			// 
+			this->mark_5->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->mark_5->FormattingEnabled = true;
 			this->mark_5->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2", L"3", L"4", L"5" });
 			this->mark_5->Location = System::Drawing::Point(33, 316);
 			this->mark_5->Name = L"mark_5";
 			this->mark_5->Size = System::Drawing::Size(80, 24);
 			this->mark_5->TabIndex = 41;
-			this->mark_5->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::comboBox5_SelectedIndexChanged);
+			this->mark_5->SelectedIndexChanged += gcnew System::EventHandler(this, &TopSoft::comboBox5_SelectedIndexChanged);
 			// 
 			// sbros
 			// 
@@ -347,7 +352,7 @@ namespace prackic2023 {
 			this->sbros->TabIndex = 42;
 			this->sbros->Text = L"sbros";
 			this->sbros->UseVisualStyleBackColor = true;
-			this->sbros->Click += gcnew System::EventHandler(this, &Form1::button1_Click_1);
+			this->sbros->Click += gcnew System::EventHandler(this, &TopSoft::button1_Click_1);
 			// 
 			// Number_stud
 			// 
@@ -358,9 +363,9 @@ namespace prackic2023 {
 			this->Number_stud->Size = System::Drawing::Size(83, 27);
 			this->Number_stud->TabIndex = 13;
 			this->Number_stud->Text = L"N student";
-			this->Number_stud->TextChanged += gcnew System::EventHandler(this, &Form1::textBox1_TextChanged);
+			this->Number_stud->TextChanged += gcnew System::EventHandler(this, &TopSoft::textBox1_TextChanged);
 			// 
-			// Form1
+			// TopSoft
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -383,11 +388,18 @@ namespace prackic2023 {
 			this->Controls->Add(this->ficha_1);
 			this->MaximumSize = System::Drawing::Size(494, 430);
 			this->MinimumSize = System::Drawing::Size(494, 430);
-			this->Name = L"Form1";
-			this->Text = L"Form1";
-			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
+			this->Name = L"TopSoft";
+			this->Text = L"TopSoft";
+			this->Load += gcnew System::EventHandler(this, &TopSoft::Form1_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
+
+			//start item
+			this->mark_1->SelectedIndex = 0;
+			this->mark_2->SelectedIndex = 0;
+			this->mark_3->SelectedIndex = 0;
+			this->mark_4->SelectedIndex = 0;
+			this->mark_5->SelectedIndex = 0;
 
 		}
 #pragma endregion
@@ -445,7 +457,7 @@ private: System::Void textBox2_TextChanged_1(System::Object^ sender, System::Eve
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void but_add_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (!Number_stud->Enabled) {
+	if (!Number_stud->Enabled && !String::IsNullOrWhiteSpace(text_name->Text) && !String::IsNullOrWhiteSpace(text_surename->Text)) {
 		list->BackColor = Color::Aquamarine;
 	}
 	else
