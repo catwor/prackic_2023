@@ -207,6 +207,7 @@ namespace prackic2023 {
 			// 
 			this->text_name->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
 			this->text_name->Location = System::Drawing::Point(33, 77);
+			this->text_name->MaxLength = 20;
 			this->text_name->Multiline = true;
 			this->text_name->Name = L"text_name";
 			this->text_name->Size = System::Drawing::Size(171, 25);
@@ -282,6 +283,7 @@ namespace prackic2023 {
 			// 
 			this->text_surename->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
 			this->text_surename->Location = System::Drawing::Point(280, 77);
+			this->text_surename->MaxLength = 20;
 			this->text_surename->Multiline = true;
 			this->text_surename->Name = L"text_surename";
 			this->text_surename->Size = System::Drawing::Size(171, 25);
@@ -358,6 +360,7 @@ namespace prackic2023 {
 			// 
 			this->Number_stud->AutoCompleteMode = System::Windows::Forms::AutoCompleteMode::SuggestAppend;
 			this->Number_stud->Location = System::Drawing::Point(33, 29);
+			this->Number_stud->MaxLength = 100;
 			this->Number_stud->Multiline = true;
 			this->Number_stud->Name = L"Number_stud";
 			this->Number_stud->Size = System::Drawing::Size(83, 27);
@@ -393,13 +396,6 @@ namespace prackic2023 {
 			this->Load += gcnew System::EventHandler(this, &TopSoft::Form1_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
-
-			//start item
-			this->mark_1->SelectedIndex = 0;
-			this->mark_2->SelectedIndex = 0;
-			this->mark_3->SelectedIndex = 0;
-			this->mark_4->SelectedIndex = 0;
-			this->mark_5->SelectedIndex = 0;
 
 		}
 #pragma endregion
@@ -458,7 +454,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void but_add_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (!Number_stud->Enabled && !String::IsNullOrWhiteSpace(text_name->Text) && !String::IsNullOrWhiteSpace(text_surename->Text)) {
-		list->BackColor = Color::Aquamarine;
+		
 	}
 	else
 		MessageBox::Show("uncorect", "Message of ERROR");
