@@ -1,4 +1,5 @@
 #pragma once
+#include <cliext/algorithm>
 #include <msclr/marshal_cppstd.h>
 #include "AVL_tree.h"
 #include "Dynamic_list_2.h"
@@ -8,6 +9,7 @@ namespace prackic2023 {
 
 	using namespace System;
 	using namespace System::ComponentModel;
+	using namespace System::IO;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
@@ -388,6 +390,7 @@ namespace prackic2023 {
 			this->save_file->TabIndex = 44;
 			this->save_file->Text = L"save_file";
 			this->save_file->UseVisualStyleBackColor = true;
+			this->save_file->Click += gcnew System::EventHandler(this, &TopSoft::save_file_Click_1);
 			// 
 			// TopSoft
 			// 
@@ -484,7 +487,6 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void but_add_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (!Number_stud->Enabled && !String::IsNullOrWhiteSpace(text_name->Text) && !String::IsNullOrWhiteSpace(text_surename->Text)){
-		//std::string addItem;
 		if (Convert::ToInt32(Number_stud->Text) > list->Items->Count) {
 			String^ Item_FIO = text_name->Text + " " + text_surename->Text + " ";
 			String^ Item_marks = mark_1->Text + " " + mark_2->Text + " " + mark_3->Text + " " + mark_4->Text + " "+mark_5->Text;
@@ -507,6 +509,17 @@ private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^
 	clear->Enabled = false;
 }
 private: System::Void save_file_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void save_file_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	if (!but_fix->Enabled) {
+		String^ filePath = "output.txt";
+		StreamWriter^ writer = gcnew StreamWriter(filePath);
+		for each(ListViewItem ^ item in list->Items) {
+			writer->WriteLine(Convert::ToString(item->Text));
+			writer->WriteLine("---------------");
+		}
+		writer->Close();
+	}
 }
 };
 }
