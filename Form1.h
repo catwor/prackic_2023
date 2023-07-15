@@ -66,6 +66,8 @@ namespace prackic2023 {
 	private: System::Windows::Forms::ComboBox^ mark_3;
 	private: System::Windows::Forms::ComboBox^ mark_4;
 	public: System::Windows::Forms::ComboBox^ mark_5;
+	private: System::Windows::Forms::Button^ clear;
+	public:
 	private:
 
 
@@ -75,7 +77,7 @@ namespace prackic2023 {
 
 
 
-	private: System::Windows::Forms::Button^ sbros;
+
 	private: System::Windows::Forms::TextBox^ Number_stud;
 
 	private: System::Windows::Forms::Button^ save_file;
@@ -196,7 +198,7 @@ namespace prackic2023 {
 			this->mark_3 = (gcnew System::Windows::Forms::ComboBox());
 			this->mark_4 = (gcnew System::Windows::Forms::ComboBox());
 			this->mark_5 = (gcnew System::Windows::Forms::ComboBox());
-			this->sbros = (gcnew System::Windows::Forms::Button());
+			this->clear = (gcnew System::Windows::Forms::Button());
 			this->Number_stud = (gcnew System::Windows::Forms::TextBox());
 			this->save_file = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
@@ -240,7 +242,7 @@ namespace prackic2023 {
 			this->list->HideSelection = false;
 			this->list->Location = System::Drawing::Point(133, 117);
 			this->list->Name = L"list";
-			this->list->Size = System::Drawing::Size(198, 212);
+			this->list->Size = System::Drawing::Size(198, 243);
 			this->list->TabIndex = 23;
 			this->list->UseCompatibleStateImageBehavior = false;
 			this->list->View = System::Windows::Forms::View::List;
@@ -356,15 +358,15 @@ namespace prackic2023 {
 			this->mark_5->TabIndex = 41;
 			this->mark_5->SelectedIndexChanged += gcnew System::EventHandler(this, &TopSoft::comboBox5_SelectedIndexChanged);
 			// 
-			// sbros
+			// clear
 			// 
-			this->sbros->Location = System::Drawing::Point(237, 25);
-			this->sbros->Name = L"sbros";
-			this->sbros->Size = System::Drawing::Size(94, 23);
-			this->sbros->TabIndex = 42;
-			this->sbros->Text = L"sbros";
-			this->sbros->UseVisualStyleBackColor = true;
-			this->sbros->Click += gcnew System::EventHandler(this, &TopSoft::button1_Click_1);
+			this->clear->Location = System::Drawing::Point(237, 25);
+			this->clear->Name = L"clear";
+			this->clear->Size = System::Drawing::Size(94, 23);
+			this->clear->TabIndex = 42;
+			this->clear->Text = L"clear";
+			this->clear->UseVisualStyleBackColor = true;
+			this->clear->Click += gcnew System::EventHandler(this, &TopSoft::button1_Click_1);
 			// 
 			// Number_stud
 			// 
@@ -393,7 +395,7 @@ namespace prackic2023 {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(476, 383);
 			this->Controls->Add(this->save_file);
-			this->Controls->Add(this->sbros);
+			this->Controls->Add(this->clear);
 			this->Controls->Add(this->mark_5);
 			this->Controls->Add(this->mark_4);
 			this->Controls->Add(this->mark_3);
@@ -429,6 +431,7 @@ private: System::Void textBox1_TextChanged(System::Object^ sender, System::Event
 private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
+	clear->Enabled = false;
 	mark_1->SelectedIndex = 0;
 	mark_2->SelectedIndex = 0;
 	mark_3->SelectedIndex = 0;
@@ -444,6 +447,8 @@ private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e
 		number = Convert::ToInt32(Number_stud->Text);
 		if (number > 0) {
 			Number_stud->Enabled = false;
+			clear->Enabled = true;
+			but_fix->Enabled = false;
 		}
 		else
 			MessageBox::Show("uncorect", "Message of ERROR");
@@ -493,6 +498,13 @@ private: System::Void but_add_Click(System::Object^ sender, System::EventArgs^ e
 		MessageBox::Show("uncorect", "Message of ERROR");
 }
 private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	Number_stud->Enabled = true;
+	but_fix->Enabled = true;
+	Number_stud->Text = "N student";
+	list->Items->Clear();
+	text_name -> Text = "Name";
+	text_surename->Text = "Surename";
+	clear->Enabled = false;
 }
 private: System::Void save_file_Click(System::Object^ sender, System::EventArgs^ e) {
 }
