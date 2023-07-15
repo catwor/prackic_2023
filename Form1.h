@@ -478,18 +478,12 @@ private: System::Void textBox2_TextChanged_1(System::Object^ sender, System::Eve
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void but_add_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (!Number_stud->Enabled && !String::IsNullOrWhiteSpace(text_name->Text) && !String::IsNullOrWhiteSpace(text_surename->Text)) {
+	if (!Number_stud->Enabled && !String::IsNullOrWhiteSpace(text_name->Text) && !String::IsNullOrWhiteSpace(text_surename->Text)){
+		//std::string addItem;
 		if (Convert::ToInt32(Number_stud->Text) > list->Items->Count) {
-			std::string name = msclr::interop::marshal_as<std::string>(text_name->Text);
-			std::string surename = msclr::interop::marshal_as<std::string>(text_surename->Text);
-			int* marks = new int[5];
-			marks[0] = Convert::ToInt32(mark_1->Text);
-			marks[1] = Convert::ToInt32(mark_2->Text);
-			marks[2] = Convert::ToInt32(mark_3->Text);
-			marks[3] = Convert::ToInt32(mark_4->Text);
-			marks[4] = Convert::ToInt32(mark_5->Text);
-			Student stud(Student(name, surename, marks));
-			ListViewItem^ newItem = gcnew ListViewItem(gcnew String(stud.get_surname().c_str()));
+			String^ Item_FIO = text_name->Text + " " + text_surename->Text + " ";
+			String^ Item_marks = mark_1->Text + " " + mark_2->Text + " " + mark_3->Text + " " + mark_4->Text + " "+mark_5->Text;
+			ListViewItem^ newItem = gcnew ListViewItem(Item_FIO+" "+Item_marks);
 			list->Items->Add(newItem);
 		}
 		else
