@@ -209,63 +209,74 @@ namespace prackic2023 {
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(474, 369);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(200, 60);
-			this->button3->TabIndex = 29;
-			this->button3->Text = L"button3";
-			this->button3->UseVisualStyleBackColor = true;
+			this->mark_5->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->mark_5->FormattingEnabled = true;
+			this->mark_5->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2", L"3", L"4", L"5" });
+			this->mark_5->Location = System::Drawing::Point(29, 305);
+			this->mark_5->Name = L"mark_5";
+			this->mark_5->Size = System::Drawing::Size(80, 24);
+			this->mark_5->TabIndex = 41;
+			this->mark_5->SelectedIndexChanged += gcnew System::EventHandler(this, &TopSoft::comboBox5_SelectedIndexChanged);
 			// 
-			// button4
+			// sbros
 			// 
-			this->button4->Location = System::Drawing::Point(474, 446);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(200, 60);
-			this->button4->TabIndex = 30;
-			this->button4->Text = L"button4";
-			this->button4->UseVisualStyleBackColor = true;
+			this->sbros->Location = System::Drawing::Point(237, 25);
+			this->sbros->Name = L"sbros";
+			this->sbros->Size = System::Drawing::Size(94, 23);
+			this->sbros->TabIndex = 42;
+			this->sbros->Text = L"clear";
+			this->sbros->UseVisualStyleBackColor = true;
+			this->sbros->Click += gcnew System::EventHandler(this, &TopSoft::button1_Click_1);
 			// 
-			// button6
+			// Number_stud
 			// 
-			this->button6->Location = System::Drawing::Point(474, 32);
-			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(200, 50);
-			this->button6->TabIndex = 31;
-			this->button6->Text = L"fix";
-			this->button6->UseVisualStyleBackColor = true;
+			this->Number_stud->AutoCompleteMode = System::Windows::Forms::AutoCompleteMode::SuggestAppend;
+			this->Number_stud->Location = System::Drawing::Point(29, 22);
+			this->Number_stud->MaxLength = 100;
+			this->Number_stud->Multiline = true;
+			this->Number_stud->Name = L"Number_stud";
+			this->Number_stud->Size = System::Drawing::Size(83, 27);
+			this->Number_stud->TabIndex = 13;
+			this->Number_stud->Text = L"N student";
+			this->Number_stud->TextChanged += gcnew System::EventHandler(this, &TopSoft::textBox1_TextChanged);
 			// 
-			// textBox3
+			// save_file
 			// 
-			this->textBox3->Location = System::Drawing::Point(379, 122);
-			this->textBox3->Multiline = true;
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(295, 50);
-			this->textBox3->TabIndex = 32;
-			this->textBox3->Text = L"Surename";
+			this->save_file->Location = System::Drawing::Point(353, 116);
+			this->save_file->Name = L"save_file";
+			this->save_file->Size = System::Drawing::Size(83, 25);
+			this->save_file->TabIndex = 44;
+			this->save_file->Text = L"save_file";
+			this->save_file->UseVisualStyleBackColor = true;
+			this->save_file->Click += gcnew System::EventHandler(this, &TopSoft::save_file_Click);
 			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(708, 547);
-			this->Controls->Add(this->textBox3);
-			this->Controls->Add(this->button6);
-			this->Controls->Add(this->button4);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->listBox5);
-			this->Controls->Add(this->listBox4);
-			this->Controls->Add(this->listBox3);
-			this->Controls->Add(this->listBox2);
-			this->Controls->Add(this->listView1);
-			this->Controls->Add(this->listBox1);
-			this->Controls->Add(this->button5);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->button1);
-			this->Name = L"Form1";
-			this->Text = L"Form1";
-			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
+			this->ClientSize = System::Drawing::Size(476, 383);
+			this->Controls->Add(this->save_file);
+			this->Controls->Add(this->sbros);
+			this->Controls->Add(this->mark_5);
+			this->Controls->Add(this->mark_4);
+			this->Controls->Add(this->mark_3);
+			this->Controls->Add(this->mark_2);
+			this->Controls->Add(this->mark_1);
+			this->Controls->Add(this->text_surename);
+			this->Controls->Add(this->but_add);
+			this->Controls->Add(this->ficha_4);
+			this->Controls->Add(this->ficha_3);
+			this->Controls->Add(this->ficha_2);
+			this->Controls->Add(this->list);
+			this->Controls->Add(this->but_fix);
+			this->Controls->Add(this->text_name);
+			this->Controls->Add(this->Number_stud);
+			this->Controls->Add(this->ficha_1);
+			this->MaximumSize = System::Drawing::Size(494, 430);
+			this->MinimumSize = System::Drawing::Size(494, 430);
+			this->Name = L"TopSoft";
+			this->Text = L"TopSoft";
+			this->Load += gcnew System::EventHandler(this, &TopSoft::Form1_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -281,10 +292,17 @@ private: System::Void textBox1_TextChanged(System::Object^ sender, System::Event
 private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
+	mark_1->SelectedIndex = 0;
+	mark_2->SelectedIndex = 0;
+	mark_3->SelectedIndex = 0;
+	mark_4->SelectedIndex = 0;
+	mark_5->SelectedIndex = 0;
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void save_file_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
