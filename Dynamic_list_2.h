@@ -2,14 +2,16 @@
 #include "Student.h"
 #include <iostream>
 #include <fstream>
+#include <string>
 
 struct Node
 {
-	String20 surname;
+	std::string surname;
 	double average_mark;
-	bool marks_sign;//true, if all marks == 4
+	bool marks_sign; //true, if all marks == 4
 	Node* next, * prev;
-	Node(String20 surname, double average_mark, bool marks_sign, Node* next = nullptr, Node* prev = nullptr) :surname(surname), average_mark(average_mark), marks_sign(marks_sign), next(next), prev(prev) {}
+
+	Node(std::string surname, double average_mark, bool marks_sign, Node* next = nullptr, Node* prev = nullptr) :surname(surname), average_mark(average_mark), marks_sign(marks_sign), next(next), prev(prev) {}
 	~Node()
 	{
 		next = nullptr;
@@ -39,9 +41,5 @@ public:
 	ptrNode get_begin()
 	{
 		return begin;
-	}
-	ptrNode get_end()
-	{
-		return end;
 	}
 };

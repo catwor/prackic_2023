@@ -1,5 +1,4 @@
 #pragma once
-#include "String20.h"
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -7,14 +6,15 @@
 class Student
 {
 private:
-	String20 name;
-	String20 surname;
+	std::string name;
+	std::string surname;
 	const int n = 5;
 	int* marks = new int[n];
 
 public:
 	Student() = default;
-	Student(String20 _name, String20 _surname, int* arr, int length = 5) : name(_name), surname(_surname) {
+	Student(std::string _name, std::string _surname, int* arr, int length = 5) : name(_name), surname(_surname)
+	{
 		for (int i = 0; i < length; ++i)
 			marks[i] = arr[i];
 	}
@@ -22,8 +22,8 @@ public:
 	Student(std::ifstream& file);
 	~Student();
 
-	String20 get_surname();
-	String20 get_name();
+	std::string get_surname();
+	std::string get_name();
 	int get_n();
 	int* get_marks();
 

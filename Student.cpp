@@ -25,12 +25,12 @@ Student::~Student()
 	delete[] marks;
 }
 
-String20 Student::get_surname()
+std::string Student::get_surname()
 {
 	return surname;
 }
 
-String20 Student::get_name()
+std::string Student::get_name()
 {
 	return name;
 }

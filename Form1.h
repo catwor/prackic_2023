@@ -479,8 +479,8 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void but_add_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (!Number_stud->Enabled && !String::IsNullOrWhiteSpace(text_name->Text) && !String::IsNullOrWhiteSpace(text_surename->Text)) {
-		String20 name = static_cast<String20>(msclr::interop::marshal_as<std::string>(text_name->Text));
-		String20 surename = static_cast<String20>(msclr::interop::marshal_as<std::string>(text_surename->Text));
+		std::string name = msclr::interop::marshal_as<std::string>(text_name->Text);
+		std::string surename = msclr::interop::marshal_as<std::string>(text_surename->Text);
 		int* marks = new int[5];
 		marks[0] = Convert::ToInt32(mark_1->Text);
 		marks[1] = Convert::ToInt32(mark_2->Text);

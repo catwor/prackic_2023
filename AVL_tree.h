@@ -4,12 +4,12 @@
 
 struct AVLNode
 {
-	String20 surname;
+	std::string surname;
 	double average_mark;
 	AVLNode* left, * right;
 	int hleft, hright;
 	AVLNode() :left(nullptr), right(nullptr), surname(), average_mark(0), hleft(0), hright(0) {};
-	AVLNode(String20 surname, double average_mark, AVLNode* left = nullptr, AVLNode* right = nullptr) : surname(surname), average_mark(average_mark), left(left), right(right), hleft(0), hright(0) {};
+	AVLNode(std::string surname, double average_mark, AVLNode* left = nullptr, AVLNode* right = nullptr) : surname(surname), average_mark(average_mark), left(left), right(right), hleft(0), hright(0) {};
 	~AVLNode()
 	{
 		left = nullptr;

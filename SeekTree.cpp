@@ -25,7 +25,7 @@ void SeekTree::print_for_level(ptrNODE& root, int level)
 {
 	if (root) {
 
-		String20 surname = root->elem->get_surname();
+		std::string surname = root->elem->get_surname();
 
 		print_for_level(root->right, level + 1);
 
@@ -41,7 +41,7 @@ void SeekTree::print_for_level3(ptrNODE& root, int level)
 {
 	if (root && level != 3) {
 
-		String20 surname = root->elem->get_surname();
+		std::string surname = root->elem->get_surname();
 
 		print_for_level3(root->right, level + 1);
 
@@ -100,7 +100,7 @@ void SeekTree::best_students()
 {
 	double maxAverage = max_average();
 	ptrNODE begin = root;
-	String20 surname;
+	std::string surname;
 
 	while (begin) {
 

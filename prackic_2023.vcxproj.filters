@@ -19,9 +19,6 @@
     <Filter Include="Файлы заголовков\Seek">
       <UniqueIdentifier>{195e3622-7fb3-4244-b5ec-99252d893899}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Файлы заголовков\String20">
-      <UniqueIdentifier>{25f967b5-ad5d-4374-893b-3780f44c16e7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Файлы заголовков\Student">
       <UniqueIdentifier>{b73213bf-d1fd-4b3d-8815-9c9e510708b6}</UniqueIdentifier>
     </Filter>
@@ -39,16 +36,13 @@
     <ClCompile Include="Student.cpp">
       <Filter>Файлы заголовков\Student</Filter>
     </ClCompile>
-    <ClCompile Include="String20.cpp">
-      <Filter>Файлы заголовков\String20</Filter>
-    </ClCompile>
     <ClCompile Include="SeekTree.cpp">
       <Filter>Файлы заголовков\Seek</Filter>
     </ClCompile>
     <ClCompile Include="Source.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="MyForm.cpp">
+    <ClCompile Include="Form1.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,14 +56,11 @@
     <ClInclude Include="Student.h">
       <Filter>Файлы заголовков\Student</Filter>
     </ClInclude>
-    <ClInclude Include="String20.h">
-      <Filter>Файлы заголовков\String20</Filter>
-    </ClInclude>
     <ClInclude Include="SeekTree.h">
       <Filter>Файлы заголовков\Seek</Filter>
     </ClInclude>
-    <ClInclude Include="MyForm.h">
-      <Filter>Исходные файлы</Filter>
+    <ClInclude Include="Form1.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
