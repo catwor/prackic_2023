@@ -1,4 +1,8 @@
 #pragma once
+#include <msclr/marshal_cppstd.h>
+#include "AVL_tree.h"
+#include "Dynamic_list_2.h"
+#include "SeekTree.h"
 
 namespace prackic2023 {
 
@@ -71,6 +75,8 @@ namespace prackic2023 {
 
 	private: System::Windows::Forms::Button^ sbros;
 	private: System::Windows::Forms::TextBox^ Number_stud;
+	private: System::Windows::Forms::Button^ open_file;
+	private: System::Windows::Forms::Button^ save_file;
 
 	public:
 	private: System::ComponentModel::IContainer^ components;
@@ -190,12 +196,14 @@ namespace prackic2023 {
 			this->mark_5 = (gcnew System::Windows::Forms::ComboBox());
 			this->sbros = (gcnew System::Windows::Forms::Button());
 			this->Number_stud = (gcnew System::Windows::Forms::TextBox());
+			this->open_file = (gcnew System::Windows::Forms::Button());
+			this->save_file = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// ficha_1
 			// 
 			this->ficha_1->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
-			this->ficha_1->Location = System::Drawing::Point(357, 128);
+			this->ficha_1->Location = System::Drawing::Point(353, 177);
 			this->ficha_1->Name = L"ficha_1";
 			this->ficha_1->Size = System::Drawing::Size(83, 24);
 			this->ficha_1->TabIndex = 9;
@@ -206,7 +214,7 @@ namespace prackic2023 {
 			// text_name
 			// 
 			this->text_name->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
-			this->text_name->Location = System::Drawing::Point(33, 77);
+			this->text_name->Location = System::Drawing::Point(29, 126);
 			this->text_name->MaxLength = 20;
 			this->text_name->Multiline = true;
 			this->text_name->Name = L"text_name";
@@ -217,7 +225,7 @@ namespace prackic2023 {
 			// 
 			// but_fix
 			// 
-			this->but_fix->Location = System::Drawing::Point(137, 31);
+			this->but_fix->Location = System::Drawing::Point(133, 80);
 			this->but_fix->Name = L"but_fix";
 			this->but_fix->Size = System::Drawing::Size(94, 25);
 			this->but_fix->TabIndex = 16;
@@ -229,7 +237,7 @@ namespace prackic2023 {
 			// 
 			this->list->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
 			this->list->HideSelection = false;
-			this->list->Location = System::Drawing::Point(137, 128);
+			this->list->Location = System::Drawing::Point(133, 177);
 			this->list->Name = L"list";
 			this->list->Size = System::Drawing::Size(198, 212);
 			this->list->TabIndex = 23;
@@ -239,7 +247,7 @@ namespace prackic2023 {
 			// ficha_2
 			// 
 			this->ficha_2->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
-			this->ficha_2->Location = System::Drawing::Point(357, 175);
+			this->ficha_2->Location = System::Drawing::Point(353, 224);
 			this->ficha_2->Name = L"ficha_2";
 			this->ficha_2->Size = System::Drawing::Size(83, 24);
 			this->ficha_2->TabIndex = 28;
@@ -250,7 +258,7 @@ namespace prackic2023 {
 			// ficha_3
 			// 
 			this->ficha_3->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
-			this->ficha_3->Location = System::Drawing::Point(357, 226);
+			this->ficha_3->Location = System::Drawing::Point(353, 275);
 			this->ficha_3->Name = L"ficha_3";
 			this->ficha_3->Size = System::Drawing::Size(83, 24);
 			this->ficha_3->TabIndex = 29;
@@ -261,7 +269,7 @@ namespace prackic2023 {
 			// ficha_4
 			// 
 			this->ficha_4->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
-			this->ficha_4->Location = System::Drawing::Point(357, 270);
+			this->ficha_4->Location = System::Drawing::Point(353, 319);
 			this->ficha_4->Name = L"ficha_4";
 			this->ficha_4->Size = System::Drawing::Size(83, 24);
 			this->ficha_4->TabIndex = 30;
@@ -271,7 +279,7 @@ namespace prackic2023 {
 			// 
 			// but_add
 			// 
-			this->but_add->Location = System::Drawing::Point(357, 31);
+			this->but_add->Location = System::Drawing::Point(353, 80);
 			this->but_add->Name = L"but_add";
 			this->but_add->Size = System::Drawing::Size(94, 25);
 			this->but_add->TabIndex = 31;
@@ -282,7 +290,7 @@ namespace prackic2023 {
 			// text_surename
 			// 
 			this->text_surename->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
-			this->text_surename->Location = System::Drawing::Point(280, 77);
+			this->text_surename->Location = System::Drawing::Point(276, 126);
 			this->text_surename->MaxLength = 20;
 			this->text_surename->Multiline = true;
 			this->text_surename->Name = L"text_surename";
@@ -296,7 +304,7 @@ namespace prackic2023 {
 			this->mark_1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->mark_1->FormattingEnabled = true;
 			this->mark_1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2", L"3", L"4", L"5" });
-			this->mark_1->Location = System::Drawing::Point(33, 128);
+			this->mark_1->Location = System::Drawing::Point(29, 177);
 			this->mark_1->Name = L"mark_1";
 			this->mark_1->Size = System::Drawing::Size(80, 24);
 			this->mark_1->TabIndex = 37;
@@ -307,7 +315,7 @@ namespace prackic2023 {
 			this->mark_2->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->mark_2->FormattingEnabled = true;
 			this->mark_2->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2", L"3", L"4", L"5" });
-			this->mark_2->Location = System::Drawing::Point(33, 175);
+			this->mark_2->Location = System::Drawing::Point(29, 224);
 			this->mark_2->Name = L"mark_2";
 			this->mark_2->Size = System::Drawing::Size(80, 24);
 			this->mark_2->TabIndex = 38;
@@ -318,7 +326,7 @@ namespace prackic2023 {
 			this->mark_3->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->mark_3->FormattingEnabled = true;
 			this->mark_3->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2", L"3", L"4", L"5" });
-			this->mark_3->Location = System::Drawing::Point(33, 226);
+			this->mark_3->Location = System::Drawing::Point(29, 275);
 			this->mark_3->Name = L"mark_3";
 			this->mark_3->Size = System::Drawing::Size(80, 24);
 			this->mark_3->TabIndex = 39;
@@ -329,7 +337,7 @@ namespace prackic2023 {
 			this->mark_4->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->mark_4->FormattingEnabled = true;
 			this->mark_4->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2", L"3", L"4", L"5" });
-			this->mark_4->Location = System::Drawing::Point(33, 271);
+			this->mark_4->Location = System::Drawing::Point(29, 320);
 			this->mark_4->Name = L"mark_4";
 			this->mark_4->Size = System::Drawing::Size(80, 24);
 			this->mark_4->TabIndex = 40;
@@ -340,7 +348,7 @@ namespace prackic2023 {
 			this->mark_5->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->mark_5->FormattingEnabled = true;
 			this->mark_5->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2", L"3", L"4", L"5" });
-			this->mark_5->Location = System::Drawing::Point(33, 316);
+			this->mark_5->Location = System::Drawing::Point(29, 365);
 			this->mark_5->Name = L"mark_5";
 			this->mark_5->Size = System::Drawing::Size(80, 24);
 			this->mark_5->TabIndex = 41;
@@ -348,7 +356,7 @@ namespace prackic2023 {
 			// 
 			// sbros
 			// 
-			this->sbros->Location = System::Drawing::Point(241, 32);
+			this->sbros->Location = System::Drawing::Point(237, 81);
 			this->sbros->Name = L"sbros";
 			this->sbros->Size = System::Drawing::Size(94, 23);
 			this->sbros->TabIndex = 42;
@@ -359,7 +367,7 @@ namespace prackic2023 {
 			// Number_stud
 			// 
 			this->Number_stud->AutoCompleteMode = System::Windows::Forms::AutoCompleteMode::SuggestAppend;
-			this->Number_stud->Location = System::Drawing::Point(33, 29);
+			this->Number_stud->Location = System::Drawing::Point(29, 78);
 			this->Number_stud->MaxLength = 100;
 			this->Number_stud->Multiline = true;
 			this->Number_stud->Name = L"Number_stud";
@@ -368,11 +376,31 @@ namespace prackic2023 {
 			this->Number_stud->Text = L"N student";
 			this->Number_stud->TextChanged += gcnew System::EventHandler(this, &TopSoft::textBox1_TextChanged);
 			// 
+			// open_file
+			// 
+			this->open_file->Location = System::Drawing::Point(29, 28);
+			this->open_file->Name = L"open_file";
+			this->open_file->Size = System::Drawing::Size(94, 25);
+			this->open_file->TabIndex = 43;
+			this->open_file->Text = L"open_file";
+			this->open_file->UseVisualStyleBackColor = true;
+			// 
+			// save_file
+			// 
+			this->save_file->Location = System::Drawing::Point(133, 28);
+			this->save_file->Name = L"save_file";
+			this->save_file->Size = System::Drawing::Size(94, 25);
+			this->save_file->TabIndex = 44;
+			this->save_file->Text = L"save_file";
+			this->save_file->UseVisualStyleBackColor = true;
+			// 
 			// TopSoft
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(476, 383);
+			this->ClientSize = System::Drawing::Size(476, 413);
+			this->Controls->Add(this->save_file);
+			this->Controls->Add(this->open_file);
 			this->Controls->Add(this->sbros);
 			this->Controls->Add(this->mark_5);
 			this->Controls->Add(this->mark_4);
@@ -389,7 +417,7 @@ namespace prackic2023 {
 			this->Controls->Add(this->text_name);
 			this->Controls->Add(this->Number_stud);
 			this->Controls->Add(this->ficha_1);
-			this->MaximumSize = System::Drawing::Size(494, 430);
+			this->MaximumSize = System::Drawing::Size(494, 460);
 			this->MinimumSize = System::Drawing::Size(494, 430);
 			this->Name = L"TopSoft";
 			this->Text = L"TopSoft";
@@ -409,6 +437,11 @@ private: System::Void textBox1_TextChanged(System::Object^ sender, System::Event
 private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
+	mark_1->SelectedIndex = 0;
+	mark_2->SelectedIndex = 0;
+	mark_3->SelectedIndex = 0;
+	mark_4->SelectedIndex = 0;
+	mark_5->SelectedIndex = 0;
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
@@ -454,7 +487,18 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void but_add_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (!Number_stud->Enabled && !String::IsNullOrWhiteSpace(text_name->Text) && !String::IsNullOrWhiteSpace(text_surename->Text)) {
-		
+		String20 name = static_cast<String20>(msclr::interop::marshal_as<std::string>(text_name->Text));
+		String20 surename = static_cast<String20>(msclr::interop::marshal_as<std::string>(text_surename->Text));
+		int* marks = new int[5];
+		marks[0] = Convert::ToInt32(mark_1->Text);
+		marks[1] = Convert::ToInt32(mark_2->Text);
+		marks[2] = Convert::ToInt32(mark_3->Text);
+		marks[3] = Convert::ToInt32(mark_4->Text);
+		marks[4] = Convert::ToInt32(mark_5->Text);
+		Student stud(Student(name, surename, marks));
+		ListViewItem^ newItem = gcnew ListViewItem(gcnew String(stud.get_surname().c_str()));
+		newItem->SubItems->Add(stud.average().ToString());
+		list->Items->Add(newItem);
 	}
 	else
 		MessageBox::Show("uncorect", "Message of ERROR");
