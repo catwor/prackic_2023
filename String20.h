@@ -14,8 +14,19 @@ public:
 	~String20();
 
 	size_t length();
-
+	const char* c_str() const {
+		return arr;
+	}
 	String20& operator=(const String20& other);
+	explicit String20(const std::string& other) {
+		arr = new char[capacity + 1] {'\0'};
+		size_t i = 0;
+
+		while (other[i] != '\0' && other[i] != '\n' && i != 21) {
+			arr[i] = other[i];
+			++i;
+		}
+	}
 	bool operator==(const String20& other);
 	bool operator!=(String20& other);
 	bool operator<(String20& other);
