@@ -5,6 +5,7 @@
 #include "Form3.h"
 #include "Form4.h"
 #include "Form5.h"
+#include "Form6.h"
 
 namespace prackic2023 {
 
@@ -42,26 +43,11 @@ namespace prackic2023 {
 			}
 		}
 	private: System::Windows::Forms::Button^ ficha_1;
-	protected:
-
-
 	private: System::Windows::Forms::TextBox^ text_name;
-	protected:
-
-
 	private: System::Windows::Forms::Button^ but_fix;
-
-	private:
-
 	private: System::Windows::Forms::Button^ ficha_2;
 	private: System::Windows::Forms::Button^ ficha_3;
 	private: System::Windows::Forms::Button^ ficha_4;
-
-
-
-
-
-
 	private: System::Windows::Forms::Button^ but_add;
 	private: System::Windows::Forms::TextBox^ text_surename;
 	private: System::Windows::Forms::ComboBox^ mark_1;
@@ -70,112 +56,14 @@ namespace prackic2023 {
 	private: System::Windows::Forms::ComboBox^ mark_4;
 	public: System::Windows::Forms::ComboBox^ mark_5;
 	private: System::Windows::Forms::Button^ clear;
-	public:
-	private:
-
-
-
-
-
-
-
-
-
 	private: System::Windows::Forms::TextBox^ Number_stud;
-
 	private: System::Windows::Forms::Button^ save_file;
 	private: System::Windows::Forms::ListBox^ list;
+	private: System::Windows::Forms::Button^ best;
 
+	private: System::Windows::Forms::Button^ exit;
 
-	public:
 	private: System::ComponentModel::IContainer^ components;
-	private:
-
-
-
-
-
-
-
-
-
-	protected:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	protected:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	protected:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	protected:
-
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -206,6 +94,8 @@ namespace prackic2023 {
 			this->Number_stud = (gcnew System::Windows::Forms::TextBox());
 			this->save_file = (gcnew System::Windows::Forms::Button());
 			this->list = (gcnew System::Windows::Forms::ListBox());
+			this->best = (gcnew System::Windows::Forms::Button());
+			this->exit = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// ficha_1
@@ -393,11 +283,33 @@ namespace prackic2023 {
 			this->list->TabIndex = 45;
 			this->list->SelectedIndexChanged += gcnew System::EventHandler(this, &TopSoft::list_SelectedIndexChanged);
 			// 
+			// best
+			// 
+			this->best->Location = System::Drawing::Point(353, 352);
+			this->best->Name = L"best";
+			this->best->Size = System::Drawing::Size(83, 25);
+			this->best->TabIndex = 46;
+			this->best->Text = L"best";
+			this->best->UseVisualStyleBackColor = true;
+			this->best->Click += gcnew System::EventHandler(this, &TopSoft::best_Click);
+			// 
+			// exit
+			// 
+			this->exit->Location = System::Drawing::Point(29, 352);
+			this->exit->Name = L"exit";
+			this->exit->Size = System::Drawing::Size(83, 25);
+			this->exit->TabIndex = 47;
+			this->exit->Text = L"exit";
+			this->exit->UseVisualStyleBackColor = true;
+			this->exit->Click += gcnew System::EventHandler(this, &TopSoft::exit_Click);
+			// 
 			// TopSoft
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(476, 383);
+			this->ClientSize = System::Drawing::Size(476, 403);
+			this->Controls->Add(this->exit);
+			this->Controls->Add(this->best);
 			this->Controls->Add(this->list);
 			this->Controls->Add(this->save_file);
 			this->Controls->Add(this->clear);
@@ -415,8 +327,8 @@ namespace prackic2023 {
 			this->Controls->Add(this->text_name);
 			this->Controls->Add(this->Number_stud);
 			this->Controls->Add(this->ficha_1);
-			this->MaximumSize = System::Drawing::Size(494, 430);
-			this->MinimumSize = System::Drawing::Size(494, 430);
+			this->MaximumSize = System::Drawing::Size(494, 450);
+			this->MinimumSize = System::Drawing::Size(494, 450);
 			this->Name = L"TopSoft";
 			this->Text = L"TopSoft";
 			this->Load += gcnew System::EventHandler(this, &TopSoft::Form1_Load);
@@ -445,6 +357,7 @@ private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
 	ficha_2->Enabled = false;
 	ficha_3->Enabled = false;
 	ficha_4->Enabled = false;
+	best->Enabled = false;
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
@@ -539,6 +452,7 @@ private: System::Void save_file_Click_1(System::Object^ sender, System::EventArg
 			ficha_2->Enabled = true;
 			ficha_3->Enabled = true;
 			ficha_4->Enabled = true;
+			best->Enabled = true;
 			String^ filePath = "output.txt";
 			StreamWriter^ writer = gcnew StreamWriter(filePath);
 			for each (String^ item in list->Items) {
@@ -560,5 +474,17 @@ private: System::Void save_file_Click_1(System::Object^ sender, System::EventArg
 }
 private: System::Void list_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void best_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Enabled = false;
+	Form6^ f5 = gcnew Form6();
+	f5->Owner = this;
+	f5->elem = list->Items->Count;
+	f5->Show();
+}
+private: System::Void exit_Click(System::Object^ sender, System::EventArgs^ e) {
+	list->Items->Clear();
+	std::remove("output.txt");
+	this->Close();
+}
 };
 }

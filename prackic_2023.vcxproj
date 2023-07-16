@@ -119,6 +119,7 @@
     <ClCompile Include="Form3.cpp" />
     <ClCompile Include="Form4.cpp" />
     <ClCompile Include="Form5.cpp" />
+    <ClCompile Include="Form6.cpp" />
     <ClCompile Include="SeekTree.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Student.cpp" />
@@ -139,6 +140,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Form5.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Form6.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="SeekTree.h" />
@@ -166,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form5.resx">
       <DependentUpon>Form5.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form6.resx">
+      <DependentUpon>Form6.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

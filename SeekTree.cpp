@@ -103,7 +103,7 @@ double SeekTree::max_average()
 	return maxAverage;
 }
 
-void SeekTree::best_students()
+void SeekTree::best_students(std::list<Student>& l)
 {
 	double maxAverage = max_average();
 	ptrNODE begin = root;
@@ -112,8 +112,7 @@ void SeekTree::best_students()
 	while (begin) {
 
 		if (begin->elem->average() == maxAverage) {
-			surname = begin->elem->get_surname();
-			std::cout << surname << ' ' << begin->elem->average() << '\n';
+			l.push_back(*begin->elem);
 		}
 
 		begin = begin->right;

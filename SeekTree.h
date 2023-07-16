@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <list>
 #include "Student.h"
 
 class NODE
@@ -47,7 +48,7 @@ public:
 	void add(Student elem);
 	void delet(ptrNODE& _root);
 	double max_average();
-	void best_students();
+	void best_students(std::list<Student>& l);
 	void clear();
 	void print();
 	void print3();
