@@ -37,6 +37,8 @@ namespace prackic2023 {
 	private: System::Windows::Forms::Button^ back;
 	public:
 		property System::Windows::Forms::Form^ Owner;
+	public:
+		property int elem;
 	protected:
 
 	private:

@@ -35,6 +35,14 @@ std::string Student::get_name()
 	return name;
 }
 
+std::string Student::get_all()
+{
+	std::string all = name + " " + surname;
+	for (int i = 0; i < n; ++i)
+		all += " " + std::to_string(marks[i]);
+	return all;
+}
+
 int Student::get_n()
 {
 	return n;

@@ -480,18 +480,21 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	this->Enabled = false;
 	Form5^ f5 = gcnew Form5();
 	f5->Owner = this;
+	f5->elem = list->Items->Count;
 	f5->Show();
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Enabled = false;
 	Form4^ f4 = gcnew Form4();
 	f4->Owner = this;
+	f4->elem = list->Items->Count;
 	f4->Show();
 }
 private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	this->Enabled = false;
 	Form3^ f3 = gcnew Form3();
 	f3->Owner = this;
+	f3->elem = list->Items->Count;
 	f3->Show();
 }
 private: System::Void comboBox5_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -502,6 +505,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	this->Enabled = false;
 	Form2^ f2 = gcnew Form2();
 	f2->Owner = this;
+	f2->elem = list->Items->Count;
 	f2->Show();
 }
 private: System::Void but_add_Click(System::Object^ sender, System::EventArgs^ e) {

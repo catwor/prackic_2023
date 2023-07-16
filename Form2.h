@@ -1,4 +1,5 @@
 #pragma once
+#include <msclr/marshal_cppstd.h>
 #include "Dynamic_list_2.h"
 
 namespace prackic2023 {
@@ -39,6 +40,8 @@ namespace prackic2023 {
 	private: System::Windows::Forms::ListBox^ listBox1;
 	public:
 		property System::Windows::Forms::Form^ Owner;
+	public:
+		property int elem;
 	protected:
 
 	private:
@@ -94,12 +97,13 @@ namespace prackic2023 {
 			//startListBox
 			//
 			std::ifstream out("output.txt");
-			DLIST stud_list(out);
+			DLIST stud_list(out, elem);
+			out.close();
 			ptrNode start = stud_list.get_begin();
 			while (start != stud_list.get_end()) {
-				
+				listBox1->Items->Add(msclr::interop::marshal_as<System::String^>(start->surname +" "+ std::to_string(start->average_mark)));
+				++start;
 			}
-
 		}
 #pragma endregion
 	private: System::Void back_Click(System::Object^ sender, System::EventArgs^ e) {

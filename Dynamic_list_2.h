@@ -30,6 +30,8 @@ public:
 	DLIST() { begin = nullptr; end = nullptr; }
 	DLIST(const char* file_name);
 	DLIST(std::ifstream& file);
+	DLIST(const char* file_name, int n);
+	DLIST(std::ifstream& file, int n);
 	~DLIST() {};
 
 	void first_Node(Student& stud);

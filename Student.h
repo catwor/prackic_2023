@@ -24,6 +24,7 @@ public:
 
 	std::string get_surname();
 	std::string get_name();
+	std::string get_all();
 	int get_n();
 	int* get_marks();
 
