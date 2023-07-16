@@ -42,4 +42,8 @@ public:
 	{
 		return begin;
 	}
+	ptrNode get_end()
+	{
+		return end;
+	}
 };

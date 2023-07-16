@@ -20,7 +20,6 @@ public:
 	}
 	Student(const Student& other);
 	Student(std::ifstream& file);
-	Student(std::string& other);
 	~Student();
 
 	std::string get_surname();

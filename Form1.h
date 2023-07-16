@@ -5,9 +5,6 @@
 #include "Form3.h"
 #include "Form4.h"
 #include "Form5.h"
-#include "AVL_tree.h"
-#include "Dynamic_list_2.h"
-#include "SeekTree.h"
 
 namespace prackic2023 {
 
@@ -533,17 +530,29 @@ private: System::Void save_file_Click(System::Object^ sender, System::EventArgs^
 }
 private: System::Void save_file_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	if (!but_fix->Enabled) {
-		ficha_1->Enabled = true;
-		ficha_2->Enabled = true;
-		ficha_3->Enabled = true;
-		ficha_4->Enabled = true;
-		String^ filePath = "output.txt";
-		StreamWriter^ writer = gcnew StreamWriter(filePath);
-		for each(Object ^ item in list->Items) {
-			writer->WriteLine(item->ToString());
+		if (list->Items->Count) {
+			ficha_1->Enabled = true;
+			ficha_2->Enabled = true;
+			ficha_3->Enabled = true;
+			ficha_4->Enabled = true;
+			String^ filePath = "output.txt";
+			StreamWriter^ writer = gcnew StreamWriter(filePath);
+			for each (String^ item in list->Items) {
+				String^ trimmedItem = item->Trim();
+
+				// Проверка на пустую строку или разделительную строку
+				if (!String::IsNullOrWhiteSpace(trimmedItem))
+				{
+					writer->WriteLine(trimmedItem);
+				}
+			}
+			writer->Close();
 		}
-		writer->Close();
+		else
+			MessageBox::Show("You don't add student", "Message of ERROR");
 	}
+	else
+		MessageBox::Show("You don't write number for students", "Message of ERROR");
 }
 private: System::Void list_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
