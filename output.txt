@@ -1,7 +1,2551 @@
-G G  4 4 4 4 4
-A E  5 5 4 5 4
-B B  4 4 4 5 4
-C C  4 4 4 4 4
-W W  5 4 3 5 4
-Z Z  5 2 3 5 4
-I I  2 2 3 5 4
+// D:\maket\c++\source\prackic_2023\AVL_tree.h 
+#pragma once
+#include <fstream>
+#include "Student.h"
+
+struct AVLNode
+{
+	std::string surname;
+	double average_mark;
+	AVLNode* left, * right;
+	int hleft, hright;
+	AVLNode() :left(nullptr), right(nullptr), surname(), average_mark(0), hleft(0), hright(0) {};
+	AVLNode(std::string surname, double average_mark, AVLNode* left = nullptr, AVLNode* right = nullptr) : surname(surname), average_mark(average_mark), left(left), right(right), hleft(0), hright(0) {};
+	~AVLNode()
+	{
+		left = nullptr;
+		right = nullptr;
+	};
+};
+
+class AVLTree {
+private:
+	AVLNode* root;
+
+	void clr(AVLNode* node);
+	AVLNode* copy(const AVLNode* node);
+	int add(AVLNode*& node, Student& stud);
+
+	double removeMin(AVLNode*& start);
+	double removeMax(AVLNode*& start);
+	bool findAndDel(AVLNode*& start, Student& stud);
+	void delNode(AVLNode*& node);
+
+	int height(AVLNode* node);
+
+	void prnt(std::ostream& stream, AVLNode* node, int level = 0);
+
+	void rightTurn(AVLNode*& node);
+	void leftTurn(AVLNode*& node);
+	void BigLeftTurn(AVLNode*& node);
+	void BigRightTurn(AVLNode*& node);
+
+	bool balance(AVLNode*& node);
+
+public:
+	AVLTree() :root(nullptr) {};
+	AVLTree(std::ifstream& file, int elem);
+	AVLTree(const AVLTree& tree);
+	~AVLTree() { clr(root); };
+
+	AVLTree& addAVL(Student& stud);
+	AVLNode* find(Student& stud);
+	bool deleteNode(Student& stud);
+
+	AVLNode* getRoot() { return root; };
+	void clear(AVLNode* firstNode) { clr(firstNode); };
+	AVLTree& AVLfromStream(std::istream& stream, int n);
+	AVLTree& AVLfromFile(std::ifstream& file);
+
+	void print(std::ostream& stream);
+}; 
+// D:\maket\c++\source\prackic_2023\Dynamic_list_2.h 
+#pragma once
+#include "Student.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+
+struct Node
+{
+	std::string surname;
+	double average_mark;
+	bool marks_sign; //true, if all marks == 4
+	Node* next, * prev;
+
+	Node(std::string _surname, double average_mark, bool marks_sign, Node* next = nullptr, Node* prev = nullptr) :average_mark(average_mark), marks_sign(marks_sign), next(next), prev(prev) { surname.reserve(21); surname = _surname; }
+	~Node()
+	{
+		next = nullptr;
+		prev = nullptr;
+	}
+};
+
+using ptrNode = Node*;
+
+struct DLIST
+{
+private:
+	ptrNode begin, end;
+	size_t size;
+public:
+	DLIST() { begin = nullptr; end = nullptr; }
+	DLIST(const char* file_name);
+	DLIST(std::ifstream& file);
+	DLIST(const char* file_name, int n);
+	DLIST(std::ifstream& file, int n);
+	~DLIST() {};
+
+	void first_Node(Student& stud);
+	bool empty();
+	void add_after(ptrNode ptr, Student& stud);
+	void add_before(ptrNode ptr, Student& stud);
+	void print();
+
+	ptrNode get_begin()
+	{
+		return begin;
+	}
+	ptrNode get_end()
+	{
+		return end;
+	}
+}; 
+// D:\maket\c++\source\prackic_2023\Form1.h 
+#pragma once
+#include <cliext/algorithm>
+#include <msclr/marshal_cppstd.h>
+#include "Form2.h"
+#include "Form3.h"
+#include "Form4.h"
+#include "Form5.h"
+
+namespace prackic2023 {
+
+	using namespace System;
+	using namespace System::ComponentModel;
+	using namespace System::IO;
+	using namespace System::Collections;
+	using namespace System::Data;
+	using namespace System::Drawing;
+	using namespace System::Windows::Forms;
+
+	/// <summary>
+	/// —водка дл€ TopSoft
+	/// </summary>
+	public ref class TopSoft : public System::Windows::Forms::Form
+	{
+	public:
+		TopSoft(void)
+		{
+			InitializeComponent();
+			//
+			//TODO: добавьте код конструктора
+			//
+		}
+
+	protected:
+		/// <summary>
+		/// ќсвободить все используемые ресурсы.
+		/// </summary>
+		~TopSoft()
+		{
+			if (components)
+			{
+				delete components;
+			}
+		}
+	private: System::Windows::Forms::Button^ ficha_1;
+	protected:
+
+
+	private: System::Windows::Forms::TextBox^ text_name;
+	protected:
+
+
+	private: System::Windows::Forms::Button^ but_fix;
+
+	private:
+
+	private: System::Windows::Forms::Button^ ficha_2;
+	private: System::Windows::Forms::Button^ ficha_3;
+	private: System::Windows::Forms::Button^ ficha_4;
+
+
+
+
+
+
+	private: System::Windows::Forms::Button^ but_add;
+	private: System::Windows::Forms::TextBox^ text_surename;
+	private: System::Windows::Forms::ComboBox^ mark_1;
+	private: System::Windows::Forms::ComboBox^ mark_2;
+	private: System::Windows::Forms::ComboBox^ mark_3;
+	private: System::Windows::Forms::ComboBox^ mark_4;
+	public: System::Windows::Forms::ComboBox^ mark_5;
+	private: System::Windows::Forms::Button^ clear;
+	public:
+	private:
+
+
+
+
+
+
+
+
+
+	private: System::Windows::Forms::TextBox^ Number_stud;
+
+	private: System::Windows::Forms::Button^ save_file;
+	private: System::Windows::Forms::ListBox^ list;
+
+
+	public:
+	private: System::ComponentModel::IContainer^ components;
+	private:
+
+
+
+
+
+
+
+
+
+	protected:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	protected:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	protected:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	protected:
+
+	private:
+		/// <summary>
+		/// ќб€зательна€ переменна€ конструктора.
+		/// </summary>
+
+
+#pragma region Windows Form Designer generated code
+		/// <summary>
+		/// “ребуемый метод дл€ поддержки конструктора Ч не измен€йте 
+		/// содержимое этого метода с помощью редактора кода.
+		/// </summary>
+		void InitializeComponent(void)
+		{
+			this->ficha_1 = (gcnew System::Windows::Forms::Button());
+			this->text_name = (gcnew System::Windows::Forms::TextBox());
+			this->but_fix = (gcnew System::Windows::Forms::Button());
+			this->ficha_2 = (gcnew System::Windows::Forms::Button());
+			this->ficha_3 = (gcnew System::Windows::Forms::Button());
+			this->ficha_4 = (gcnew System::Windows::Forms::Button());
+			this->but_add = (gcnew System::Windows::Forms::Button());
+			this->text_surename = (gcnew System::Windows::Forms::TextBox());
+			this->mark_1 = (gcnew System::Windows::Forms::ComboBox());
+			this->mark_2 = (gcnew System::Windows::Forms::ComboBox());
+			this->mark_3 = (gcnew System::Windows::Forms::ComboBox());
+			this->mark_4 = (gcnew System::Windows::Forms::ComboBox());
+			this->mark_5 = (gcnew System::Windows::Forms::ComboBox());
+			this->clear = (gcnew System::Windows::Forms::Button());
+			this->Number_stud = (gcnew System::Windows::Forms::TextBox());
+			this->save_file = (gcnew System::Windows::Forms::Button());
+			this->list = (gcnew System::Windows::Forms::ListBox());
+			this->SuspendLayout();
+			// 
+			// ficha_1
+			// 
+			this->ficha_1->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
+			this->ficha_1->Location = System::Drawing::Point(353, 164);
+			this->ficha_1->Name = L"ficha_1";
+			this->ficha_1->Size = System::Drawing::Size(83, 24);
+			this->ficha_1->TabIndex = 9;
+			this->ficha_1->Text = L"list Alpha";
+			this->ficha_1->UseVisualStyleBackColor = true;
+			this->ficha_1->Click += gcnew System::EventHandler(this, &TopSoft::button1_Click);
+			// 
+			// text_name
+			// 
+			this->text_name->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
+			this->text_name->Location = System::Drawing::Point(29, 66);
+			this->text_name->MaxLength = 20;
+			this->text_name->Multiline = true;
+			this->text_name->Name = L"text_name";
+			this->text_name->Size = System::Drawing::Size(171, 25);
+			this->text_name->TabIndex = 14;
+			this->text_name->Text = L"Name";
+			this->text_name->TextChanged += gcnew System::EventHandler(this, &TopSoft::textBox2_TextChanged_1);
+			// 
+			// but_fix
+			// 
+			this->but_fix->Location = System::Drawing::Point(133, 24);
+			this->but_fix->Name = L"but_fix";
+			this->but_fix->Size = System::Drawing::Size(94, 25);
+			this->but_fix->TabIndex = 16;
+			this->but_fix->Text = L"fix";
+			this->but_fix->UseVisualStyleBackColor = true;
+			this->but_fix->Click += gcnew System::EventHandler(this, &TopSoft::button5_Click);
+			// 
+			// ficha_2
+			// 
+			this->ficha_2->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
+			this->ficha_2->Location = System::Drawing::Point(353, 214);
+			this->ficha_2->Name = L"ficha_2";
+			this->ficha_2->Size = System::Drawing::Size(83, 24);
+			this->ficha_2->TabIndex = 28;
+			this->ficha_2->Text = L"list marks";
+			this->ficha_2->UseVisualStyleBackColor = true;
+			this->ficha_2->Click += gcnew System::EventHandler(this, &TopSoft::button2_Click_1);
+			// 
+			// ficha_3
+			// 
+			this->ficha_3->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
+			this->ficha_3->Location = System::Drawing::Point(353, 261);
+			this->ficha_3->Name = L"ficha_3";
+			this->ficha_3->Size = System::Drawing::Size(83, 24);
+			this->ficha_3->TabIndex = 29;
+			this->ficha_3->Text = L"SeekTree";
+			this->ficha_3->UseVisualStyleBackColor = true;
+			this->ficha_3->Click += gcnew System::EventHandler(this, &TopSoft::button3_Click);
+			// 
+			// ficha_4
+			// 
+			this->ficha_4->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
+			this->ficha_4->Location = System::Drawing::Point(353, 305);
+			this->ficha_4->Name = L"ficha_4";
+			this->ficha_4->Size = System::Drawing::Size(83, 24);
+			this->ficha_4->TabIndex = 30;
+			this->ficha_4->Text = L"AVLTree";
+			this->ficha_4->UseVisualStyleBackColor = true;
+			this->ficha_4->Click += gcnew System::EventHandler(this, &TopSoft::button4_Click);
+			// 
+			// but_add
+			// 
+			this->but_add->Location = System::Drawing::Point(353, 24);
+			this->but_add->Name = L"but_add";
+			this->but_add->Size = System::Drawing::Size(94, 25);
+			this->but_add->TabIndex = 31;
+			this->but_add->Text = L"add";
+			this->but_add->UseVisualStyleBackColor = true;
+			this->but_add->Click += gcnew System::EventHandler(this, &TopSoft::but_add_Click);
+			// 
+			// text_surename
+			// 
+			this->text_surename->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
+			this->text_surename->Location = System::Drawing::Point(276, 66);
+			this->text_surename->MaxLength = 20;
+			this->text_surename->Multiline = true;
+			this->text_surename->Name = L"text_surename";
+			this->text_surename->Size = System::Drawing::Size(171, 25);
+			this->text_surename->TabIndex = 32;
+			this->text_surename->Text = L"Surename";
+			this->text_surename->TextChanged += gcnew System::EventHandler(this, &TopSoft::textBox3_TextChanged_1);
+			// 
+			// mark_1
+			// 
+			this->mark_1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->mark_1->FormattingEnabled = true;
+			this->mark_1->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2", L"3", L"4", L"5" });
+			this->mark_1->Location = System::Drawing::Point(29, 117);
+			this->mark_1->Name = L"mark_1";
+			this->mark_1->Size = System::Drawing::Size(80, 24);
+			this->mark_1->TabIndex = 37;
+			this->mark_1->SelectedIndexChanged += gcnew System::EventHandler(this, &TopSoft::comboBox1_SelectedIndexChanged);
+			// 
+			// mark_2
+			// 
+			this->mark_2->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->mark_2->FormattingEnabled = true;
+			this->mark_2->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2", L"3", L"4", L"5" });
+			this->mark_2->Location = System::Drawing::Point(29, 164);
+			this->mark_2->Name = L"mark_2";
+			this->mark_2->Size = System::Drawing::Size(80, 24);
+			this->mark_2->TabIndex = 38;
+			this->mark_2->SelectedIndexChanged += gcnew System::EventHandler(this, &TopSoft::comboBox2_SelectedIndexChanged);
+			// 
+			// mark_3
+			// 
+			this->mark_3->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->mark_3->FormattingEnabled = true;
+			this->mark_3->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2", L"3", L"4", L"5" });
+			this->mark_3->Location = System::Drawing::Point(29, 215);
+			this->mark_3->Name = L"mark_3";
+			this->mark_3->Size = System::Drawing::Size(80, 24);
+			this->mark_3->TabIndex = 39;
+			this->mark_3->SelectedIndexChanged += gcnew System::EventHandler(this, &TopSoft::comboBox3_SelectedIndexChanged);
+			// 
+			// mark_4
+			// 
+			this->mark_4->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->mark_4->FormattingEnabled = true;
+			this->mark_4->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2", L"3", L"4", L"5" });
+			this->mark_4->Location = System::Drawing::Point(29, 260);
+			this->mark_4->Name = L"mark_4";
+			this->mark_4->Size = System::Drawing::Size(80, 24);
+			this->mark_4->TabIndex = 40;
+			this->mark_4->SelectedIndexChanged += gcnew System::EventHandler(this, &TopSoft::comboBox4_SelectedIndexChanged);
+			// 
+			// mark_5
+			// 
+			this->mark_5->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->mark_5->FormattingEnabled = true;
+			this->mark_5->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"2", L"3", L"4", L"5" });
+			this->mark_5->Location = System::Drawing::Point(29, 305);
+			this->mark_5->Name = L"mark_5";
+			this->mark_5->Size = System::Drawing::Size(80, 24);
+			this->mark_5->TabIndex = 41;
+			this->mark_5->SelectedIndexChanged += gcnew System::EventHandler(this, &TopSoft::comboBox5_SelectedIndexChanged);
+			// 
+			// clear
+			// 
+			this->clear->Location = System::Drawing::Point(237, 25);
+			this->clear->Name = L"clear";
+			this->clear->Size = System::Drawing::Size(94, 23);
+			this->clear->TabIndex = 42;
+			this->clear->Text = L"clear";
+			this->clear->UseVisualStyleBackColor = true;
+			this->clear->Click += gcnew System::EventHandler(this, &TopSoft::button1_Click_1);
+			// 
+			// Number_stud
+			// 
+			this->Number_stud->AutoCompleteMode = System::Windows::Forms::AutoCompleteMode::SuggestAppend;
+			this->Number_stud->Location = System::Drawing::Point(29, 22);
+			this->Number_stud->MaxLength = 100;
+			this->Number_stud->Multiline = true;
+			this->Number_stud->Name = L"Number_stud";
+			this->Number_stud->Size = System::Drawing::Size(83, 27);
+			this->Number_stud->TabIndex = 13;
+			this->Number_stud->Text = L"N student";
+			this->Number_stud->TextChanged += gcnew System::EventHandler(this, &TopSoft::textBox1_TextChanged);
+			// 
+			// save_file
+			// 
+			this->save_file->Location = System::Drawing::Point(353, 116);
+			this->save_file->Name = L"save_file";
+			this->save_file->Size = System::Drawing::Size(83, 25);
+			this->save_file->TabIndex = 44;
+			this->save_file->Text = L"save_file";
+			this->save_file->UseVisualStyleBackColor = true;
+			this->save_file->Click += gcnew System::EventHandler(this, &TopSoft::save_file_Click_1);
+			// 
+			// list
+			// 
+			this->list->FormattingEnabled = true;
+			this->list->ItemHeight = 16;
+			this->list->Location = System::Drawing::Point(133, 117);
+			this->list->Name = L"list";
+			this->list->Size = System::Drawing::Size(198, 212);
+			this->list->TabIndex = 45;
+			this->list->SelectedIndexChanged += gcnew System::EventHandler(this, &TopSoft::list_SelectedIndexChanged);
+			// 
+			// TopSoft
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(476, 383);
+			this->Controls->Add(this->list);
+			this->Controls->Add(this->save_file);
+			this->Controls->Add(this->clear);
+			this->Controls->Add(this->mark_5);
+			this->Controls->Add(this->mark_4);
+			this->Controls->Add(this->mark_3);
+			this->Controls->Add(this->mark_2);
+			this->Controls->Add(this->mark_1);
+			this->Controls->Add(this->text_surename);
+			this->Controls->Add(this->but_add);
+			this->Controls->Add(this->ficha_4);
+			this->Controls->Add(this->ficha_3);
+			this->Controls->Add(this->ficha_2);
+			this->Controls->Add(this->but_fix);
+			this->Controls->Add(this->text_name);
+			this->Controls->Add(this->Number_stud);
+			this->Controls->Add(this->ficha_1);
+			this->MaximumSize = System::Drawing::Size(494, 430);
+			this->MinimumSize = System::Drawing::Size(494, 430);
+			this->Name = L"TopSoft";
+			this->Text = L"TopSoft";
+			this->Load += gcnew System::EventHandler(this, &TopSoft::Form1_Load);
+			this->ResumeLayout(false);
+			this->PerformLayout();
+
+		}
+#pragma endregion
+	private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+
+private: System::Void menuStrip2_ItemClicked(System::Object^ sender, System::Windows::Forms::ToolStripItemClickedEventArgs^ e) {
+}
+private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textBox3_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
+	clear->Enabled = false;
+	mark_1->SelectedIndex = 0;
+	mark_2->SelectedIndex = 0;
+	mark_3->SelectedIndex = 0;
+	mark_4->SelectedIndex = 0;
+	mark_5->SelectedIndex = 0;
+	ficha_1->Enabled = false;
+	ficha_2->Enabled = false;
+	ficha_3->Enabled = false;
+	ficha_4->Enabled = false;
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	int number;
+	bool tryNumber = Int32::TryParse(Number_stud->Text, number);
+	if (tryNumber) {
+		number = Convert::ToInt32(Number_stud->Text);
+		if (number > 0) {
+			Number_stud->Enabled = false;
+			clear->Enabled = true;
+			but_fix->Enabled = false;
+		}
+		else
+			MessageBox::Show("uncorect", "Message of ERROR");
+	}
+	else
+		MessageBox::Show("uncorect", "Message of ERROR");
+}
+
+
+private: System::Void comboBox4_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void comboBox3_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void comboBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textBox3_TextChanged_1(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Enabled = false;
+	Form5^ f5 = gcnew Form5();
+	f5->Owner = this;
+	f5->elem = list->Items->Count;
+	f5->Show();
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Enabled = false;
+	Form4^ f4 = gcnew Form4();
+	f4->Owner = this;
+	f4->elem = list->Items->Count;
+	f4->Show();
+}
+private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	this->Enabled = false;
+	Form3^ f3 = gcnew Form3();
+	f3->Owner = this;
+	f3->elem = list->Items->Count;
+	f3->Show();
+}
+private: System::Void comboBox5_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textBox2_TextChanged_1(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Enabled = false;
+	Form2^ f2 = gcnew Form2();
+	f2->Owner = this;
+	f2->elem = list->Items->Count;
+	f2->Show();
+}
+private: System::Void but_add_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (!Number_stud->Enabled && !String::IsNullOrWhiteSpace(text_name->Text) && !String::IsNullOrWhiteSpace(text_surename->Text)) {
+		if (Convert::ToInt32(Number_stud->Text) > list->Items->Count) {
+			String^ Item_FIO = text_name->Text + " " + text_surename->Text + " ";
+			String^ Item_marks = mark_1->Text + " " + mark_2->Text + " " + mark_3->Text + " " + mark_4->Text + " " + mark_5->Text;
+			list->Items->Add(Item_FIO + " " + Item_marks);
+		}
+		else
+			MessageBox::Show("A lot of stud", "Message of ERROR");
+	}
+	else
+		MessageBox::Show("uncorect", "Message of ERROR");
+}
+private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	Number_stud->Enabled = true;
+	but_fix->Enabled = true;
+	Number_stud->Text = "N student";
+	list->Items->Clear();
+	text_name -> Text = "Name";
+	text_surename->Text = "Surename";
+	clear->Enabled = false;
+}
+private: System::Void save_file_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void save_file_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	if (!but_fix->Enabled) {
+		if (list->Items->Count) {
+			ficha_1->Enabled = true;
+			ficha_2->Enabled = true;
+			ficha_3->Enabled = true;
+			ficha_4->Enabled = true;
+			String^ filePath = "output.txt";
+			StreamWriter^ writer = gcnew StreamWriter(filePath);
+			for each (String^ item in list->Items) {
+				String^ trimmedItem = item->Trim();
+
+				// ѕроверка на пустую строку или разделительную строку
+				if (!String::IsNullOrWhiteSpace(trimmedItem))
+				{
+					writer->WriteLine(trimmedItem);
+				}
+			}
+			writer->Close();
+		}
+		else
+			MessageBox::Show("You don't add student", "Message of ERROR");
+	}
+	else
+		MessageBox::Show("You don't write number for students", "Message of ERROR");
+}
+private: System::Void list_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
+}
+ 
+// D:\maket\c++\source\prackic_2023\Form2.h 
+#pragma once
+#include <msclr/marshal_cppstd.h>
+#include "Dynamic_list_2.h"
+
+namespace prackic2023 {
+
+	using namespace System;
+	using namespace System::ComponentModel;
+	using namespace System::Collections;
+	using namespace System::Windows::Forms;
+	using namespace System::Data;
+	using namespace System::Drawing;
+
+	/// <summary>
+	/// —водка дл€ Form2
+	/// </summary>
+	public ref class Form2 : public System::Windows::Forms::Form
+	{
+	public:
+		Form2(void)
+		{
+			InitializeComponent();
+			//
+			//TODO: добавьте код конструктора
+			//
+		}
+
+	protected:
+		/// <summary>
+		/// ќсвободить все используемые ресурсы.
+		/// </summary>
+		~Form2()
+		{
+			if (components)
+			{
+				delete components;
+			}
+		}
+	private: System::Windows::Forms::Button^ back;
+	private: System::Windows::Forms::ListBox^ listBox1;
+
+	public:
+		property System::Windows::Forms::Form^ Owner;
+	public:
+		property int elem;
+	protected:
+
+	private:
+		/// <summary>
+		/// ќб€зательна€ переменна€ конструктора.
+		/// </summary>
+		System::ComponentModel::Container^ components;
+
+#pragma region Windows Form Designer generated code
+		/// <summary>
+		/// “ребуемый метод дл€ поддержки конструктора Ч не измен€йте 
+		/// содержимое этого метода с помощью редактора кода.
+		/// </summary>
+		void InitializeComponent(void)
+		{
+			this->back = (gcnew System::Windows::Forms::Button());
+			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
+			this->SuspendLayout();
+			// 
+			// back
+			// 
+			this->back->Location = System::Drawing::Point(0, 339);
+			this->back->Name = L"back";
+			this->back->Size = System::Drawing::Size(112, 46);
+			this->back->TabIndex = 1;
+			this->back->Text = L"back";
+			this->back->UseVisualStyleBackColor = true;
+			this->back->Click += gcnew System::EventHandler(this, &Form2::back_Click);
+			// 
+			// listBox1
+			// 
+			this->listBox1->FormattingEnabled = true;
+			this->listBox1->ItemHeight = 16;
+			this->listBox1->Location = System::Drawing::Point(12, 12);
+			this->listBox1->Name = L"listBox1";
+			this->listBox1->Size = System::Drawing::Size(440, 308);
+			this->listBox1->TabIndex = 3;
+			this->listBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Form2::listBox1_SelectedIndexChanged);
+			// 
+			// Form2
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(476, 383);
+			this->Controls->Add(this->listBox1);
+			this->Controls->Add(this->back);
+			this->MaximumSize = System::Drawing::Size(494, 430);
+			this->MinimumSize = System::Drawing::Size(494, 430);
+			this->Name = L"Form2";
+			this->Text = L"Form2";
+			this->Load += gcnew System::EventHandler(this, &Form2::Form2_Load);
+			this->ResumeLayout(false);
+
+		}
+#pragma endregion
+	private: System::Void back_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+		if (this->Owner) {
+			this->Owner->Enabled = true;
+			this->Owner->WindowState = FormWindowState::Maximized;
+		}
+	}
+	private: System::Void Form2_Load(System::Object^ sender, System::EventArgs^ e) {
+		std::ifstream file("output.txt");
+		DLIST tmp(file, elem);
+		file.close();
+		ptrNode ptr = tmp.get_begin();
+		while (ptr) {
+			listBox1->Items->Add(msclr::interop::marshal_as<System::String^>(ptr->surname +" "+std::to_string(ptr->average_mark)));
+			ptr=ptr->next;
+		}
+	}
+	private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
+}
+ 
+// D:\maket\c++\source\prackic_2023\Form3.h 
+#pragma once
+#include <msclr/marshal_cppstd.h>
+#include "Dynamic_list_2.h"
+
+namespace prackic2023 {
+
+	using namespace System;
+	using namespace System::ComponentModel;
+	using namespace System::Collections;
+	using namespace System::Windows::Forms;
+	using namespace System::Data;
+	using namespace System::Drawing;
+
+	/// <summary>
+	/// —водка дл€ Form3
+	/// </summary>
+	public ref class Form3 : public System::Windows::Forms::Form
+	{
+	public:
+		Form3(void)
+		{
+			InitializeComponent();
+			//
+			//TODO: добавьте код конструктора
+			//
+		}
+
+	protected:
+		/// <summary>
+		/// ќсвободить все используемые ресурсы.
+		/// </summary>
+		~Form3()
+		{
+			if (components)
+			{
+				delete components;
+			}
+		}
+	private: System::Windows::Forms::Button^ back;
+	private: System::Windows::Forms::ListBox^ listBox1;
+	public:
+		property System::Windows::Forms::Form^ Owner;
+	public:
+		property int elem;
+	protected:
+
+	private:
+		/// <summary>
+		/// ќб€зательна€ переменна€ конструктора.
+		/// </summary>
+		System::ComponentModel::Container ^components;
+
+#pragma region Windows Form Designer generated code
+		/// <summary>
+		/// “ребуемый метод дл€ поддержки конструктора Ч не измен€йте 
+		/// содержимое этого метода с помощью редактора кода.
+		/// </summary>
+		void InitializeComponent(void)
+		{
+			this->back = (gcnew System::Windows::Forms::Button());
+			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
+			this->SuspendLayout();
+			// 
+			// back
+			// 
+			this->back->Location = System::Drawing::Point(0, 339);
+			this->back->Name = L"back";
+			this->back->Size = System::Drawing::Size(112, 46);
+			this->back->TabIndex = 1;
+			this->back->Text = L"back";
+			this->back->UseVisualStyleBackColor = true;
+			this->back->Click += gcnew System::EventHandler(this, &Form3::back_Click);
+			// 
+			// listBox1
+			// 
+			this->listBox1->FormattingEnabled = true;
+			this->listBox1->ItemHeight = 16;
+			this->listBox1->Location = System::Drawing::Point(12, 12);
+			this->listBox1->Name = L"listBox1";
+			this->listBox1->Size = System::Drawing::Size(440, 308);
+			this->listBox1->TabIndex = 2;
+			this->listBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Form3::listBox1_SelectedIndexChanged);
+			// 
+			// Form3
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(476, 383);
+			this->Controls->Add(this->listBox1);
+			this->Controls->Add(this->back);
+			this->MaximumSize = System::Drawing::Size(494, 430);
+			this->MinimumSize = System::Drawing::Size(494, 430);
+			this->Name = L"Form3";
+			this->Text = L"Form3";
+			this->Load += gcnew System::EventHandler(this, &Form3::Form3_Load);
+			this->ResumeLayout(false);
+
+		}
+#pragma endregion
+	private: System::Void back_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+		if (this->Owner) {
+			this->Owner->Enabled = true;
+			this->Owner->WindowState = FormWindowState::Maximized;
+		}
+	}
+	private: System::Void Form3_Load(System::Object^ sender, System::EventArgs^ e) {
+		DLIST tmp("output.txt", elem);
+		ptrNode ptr = tmp.get_begin();
+		while (ptr) {
+			listBox1->Items->Add(msclr::interop::marshal_as<System::String^>(ptr->surname +" "+std::to_string(ptr->average_mark)));
+			ptr = ptr->next;
+		}
+	}
+	private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	};
+}
+ 
+// D:\maket\c++\source\prackic_2023\Form4.h 
+#pragma once
+#include <msclr/marshal_cppstd.h>
+#include "SeekTree.h"
+
+namespace prackic2023 {
+
+	using namespace System;
+	using namespace System::ComponentModel;
+	using namespace System::Collections;
+	using namespace System::Windows::Forms;
+	using namespace System::Data;
+	using namespace System::Drawing;
+
+	/// <summary>
+	/// —водка дл€ Form4
+	/// </summary>
+	public ref class Form4 : public System::Windows::Forms::Form
+	{
+	public:
+		Form4(void)
+		{
+			InitializeComponent();
+			//
+			//TODO: добавьте код конструктора
+			//
+		}
+
+	protected:
+		/// <summary>
+		/// ќсвободить все используемые ресурсы.
+		/// </summary>
+		~Form4()
+		{
+			if (components)
+			{
+				delete components;
+			}
+		}
+	private: System::Windows::Forms::Button^ back;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::PictureBox^ pictureBox2;
+	private: System::Windows::Forms::PictureBox^ pictureBox3;
+	private: System::Windows::Forms::PictureBox^ pictureBox4;
+	private: System::Windows::Forms::PictureBox^ pictureBox5;
+	private: System::Windows::Forms::PictureBox^ pictureBox6;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Label^ label7;
+
+
+
+	public:
+		property System::Windows::Forms::Form^ Owner;
+	public:
+		property int elem;
+	protected:
+
+	private:
+		/// <summary>
+		/// ќб€зательна€ переменна€ конструктора.
+		/// </summary>
+		System::ComponentModel::Container^ components;
+
+#pragma region Windows Form Designer generated code
+		/// <summary>
+		/// “ребуемый метод дл€ поддержки конструктора Ч не измен€йте 
+		/// содержимое этого метода с помощью редактора кода.
+		/// </summary>
+		void InitializeComponent(void)
+		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form4::typeid));
+			this->back = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox6 = (gcnew System::Windows::Forms::PictureBox());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->BeginInit();
+			this->SuspendLayout();
+			// 
+			// back
+			// 
+			this->back->Location = System::Drawing::Point(0, 338);
+			this->back->Name = L"back";
+			this->back->Size = System::Drawing::Size(112, 46);
+			this->back->TabIndex = 1;
+			this->back->Text = L"back";
+			this->back->UseVisualStyleBackColor = true;
+			this->back->Click += gcnew System::EventHandler(this, &Form4::back_Click);
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label1->Location = System::Drawing::Point(279, 14);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(81, 29);
+			this->label1->TabIndex = 2;
+			this->label1->Text = L"label1";
+			this->label1->Click += gcnew System::EventHandler(this, &Form4::label1_Click);
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label2->Location = System::Drawing::Point(172, 124);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(81, 29);
+			this->label2->TabIndex = 3;
+			this->label2->Text = L"label2";
+			this->label2->Click += gcnew System::EventHandler(this, &Form4::label2_Click);
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label3->Location = System::Drawing::Point(406, 124);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(81, 29);
+			this->label3->TabIndex = 4;
+			this->label3->Text = L"label3";
+			this->label3->Click += gcnew System::EventHandler(this, &Form4::label3_Click);
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(233, 71);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(49, 50);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox1->TabIndex = 5;
+			this->pictureBox1->TabStop = false;
+			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
+			this->pictureBox2->Location = System::Drawing::Point(347, 71);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(50, 50);
+			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox2->TabIndex = 6;
+			this->pictureBox2->TabStop = false;
+			// 
+			// pictureBox3
+			// 
+			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
+			this->pictureBox3->Location = System::Drawing::Point(126, 174);
+			this->pictureBox3->Name = L"pictureBox3";
+			this->pictureBox3->Size = System::Drawing::Size(49, 50);
+			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox3->TabIndex = 7;
+			this->pictureBox3->TabStop = false;
+			// 
+			// pictureBox4
+			// 
+			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
+			this->pictureBox4->Location = System::Drawing::Point(231, 174);
+			this->pictureBox4->Name = L"pictureBox4";
+			this->pictureBox4->Size = System::Drawing::Size(50, 50);
+			this->pictureBox4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox4->TabIndex = 8;
+			this->pictureBox4->TabStop = false;
+			// 
+			// pictureBox5
+			// 
+			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
+			this->pictureBox5->Location = System::Drawing::Point(474, 174);
+			this->pictureBox5->Name = L"pictureBox5";
+			this->pictureBox5->Size = System::Drawing::Size(50, 50);
+			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox5->TabIndex = 10;
+			this->pictureBox5->TabStop = false;
+			// 
+			// pictureBox6
+			// 
+			this->pictureBox6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.Image")));
+			this->pictureBox6->Location = System::Drawing::Point(385, 174);
+			this->pictureBox6->Name = L"pictureBox6";
+			this->pictureBox6->Size = System::Drawing::Size(49, 50);
+			this->pictureBox6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox6->TabIndex = 9;
+			this->pictureBox6->TabStop = false;
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label4->Location = System::Drawing::Point(56, 238);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(81, 29);
+			this->label4->TabIndex = 11;
+			this->label4->Text = L"label4";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label5->Location = System::Drawing::Point(227, 238);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(81, 29);
+			this->label5->TabIndex = 12;
+			this->label5->Text = L"label5";
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label6->Location = System::Drawing::Point(512, 238);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(81, 29);
+			this->label6->TabIndex = 14;
+			this->label6->Text = L"label6";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label7->Location = System::Drawing::Point(353, 238);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(81, 29);
+			this->label7->TabIndex = 13;
+			this->label7->Text = L"label7";
+			// 
+			// Form4
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(682, 383);
+			this->Controls->Add(this->label6);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->back);
+			this->Controls->Add(this->pictureBox2);
+			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->pictureBox5);
+			this->Controls->Add(this->pictureBox6);
+			this->Controls->Add(this->pictureBox4);
+			this->Controls->Add(this->pictureBox3);
+			this->MaximumSize = System::Drawing::Size(700, 500);
+			this->MinimumSize = System::Drawing::Size(494, 430);
+			this->Name = L"Form4";
+			this->Text = L"Form4";
+			this->Load += gcnew System::EventHandler(this, &Form4::Form4_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->EndInit();
+			this->ResumeLayout(false);
+			this->PerformLayout();
+
+		}
+#pragma endregion
+	private: System::Void back_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+		if (this->Owner) {
+			this->Owner->Enabled = true;
+			this->Owner->WindowState = FormWindowState::Maximized;
+		}
+	}
+	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void Form4_Load(System::Object^ sender, System::EventArgs^ e) {
+		std::ifstream file("output.txt");
+		SeekTree t(file, elem);
+		ptrNODE ptr = t.get_root();
+		label1->Text = msclr::interop::marshal_as<System::String^>(ptr->elem->get_surname()+"\n"+std::to_string(ptr->elem->average()));
+		if (ptr->left) {
+			label2->Text = msclr::interop::marshal_as<System::String^>(ptr->left->elem->get_surname() + "\n" + std::to_string(ptr->left->elem->average()));
+			if (ptr->left->left)
+				label4->Text = msclr::interop::marshal_as<System::String^>(ptr->left->left->elem->get_surname() + "\n" + std::to_string(ptr->left->left->elem->average()));
+			else
+				label4->Text = "EMPTY";
+			if (ptr->left->right)
+				label5->Text = msclr::interop::marshal_as<System::String^>(ptr->left->right->elem->get_surname() + "\n" + std::to_string(ptr->left->right->elem->average()));
+			else
+				label5->Text = "EMPTY";
+		}
+		else {
+			label2->Text = "EMPTY";
+			label4->Text = "EMPTY";
+			label5->Text = "EMPTY";
+		}
+		if (ptr->right) {
+			label3->Text = msclr::interop::marshal_as<System::String^>(ptr->right->elem->get_surname() + "\n" + std::to_string(ptr->right->elem->average()));
+			if (ptr->right->right)
+				label6->Text = msclr::interop::marshal_as<System::String^>(ptr->right->right->elem->get_surname() + "\n" + std::to_string(ptr->right->right->elem->average()));
+			else
+				label6->Text = "EMPTY";
+			if (ptr->right->left)
+				label7->Text = msclr::interop::marshal_as<System::String^>(ptr->right->left->elem->get_surname() + "\n" + std::to_string(ptr->right->left->elem->average()));
+			else
+				label7->Text = "EMPTY";
+		}
+		else {
+			label3->Text = "EMPTY";
+			label6->Text = "EMPTY";
+			label7->Text = "EMPTY";
+		}
+		
+		;
+	}
+	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	};
+}
+ 
+// D:\maket\c++\source\prackic_2023\Form5.h 
+#pragma once
+#include <msclr/marshal_cppstd.h>
+#include "AVL_tree.h"
+
+namespace prackic2023 {
+
+	using namespace System;
+	using namespace System::ComponentModel;
+	using namespace System::Collections;
+	using namespace System::Windows::Forms;
+	using namespace System::Data;
+	using namespace System::Drawing;
+
+	/// <summary>
+	/// —водка дл€ Form5
+	/// </summary>
+	public ref class Form5 : public System::Windows::Forms::Form
+	{
+	public:
+		Form5(void)
+		{
+			InitializeComponent();
+			//
+			//TODO: добавьте код конструктора
+			//
+		}
+
+	protected:
+		/// <summary>
+		/// ќсвободить все используемые ресурсы.
+		/// </summary>
+		~Form5()
+		{
+			if (components)
+			{
+				delete components;
+			}
+		}
+	private: System::Windows::Forms::Button^ back;
+	private: System::Windows::Forms::PictureBox^ pictureBox2;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::PictureBox^ pictureBox5;
+	private: System::Windows::Forms::PictureBox^ pictureBox6;
+	private: System::Windows::Forms::PictureBox^ pictureBox4;
+	private: System::Windows::Forms::PictureBox^ pictureBox3;
+	public:
+		property System::Windows::Forms::Form^ Owner;
+	public:
+		property int elem;
+	protected:
+
+	private:
+		/// <summary>
+		/// ќб€зательна€ переменна€ конструктора.
+		/// </summary>
+		System::ComponentModel::Container ^components;
+
+#pragma region Windows Form Designer generated code
+		/// <summary>
+		/// “ребуемый метод дл€ поддержки конструктора Ч не измен€йте 
+		/// содержимое этого метода с помощью редактора кода.
+		/// </summary>
+		void InitializeComponent(void)
+		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Form5::typeid));
+			this->back = (gcnew System::Windows::Forms::Button());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox6 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
+			this->SuspendLayout();
+			// 
+			// back
+			// 
+			this->back->Location = System::Drawing::Point(-1, 338);
+			this->back->Name = L"back";
+			this->back->Size = System::Drawing::Size(112, 46);
+			this->back->TabIndex = 2;
+			this->back->Text = L"back";
+			this->back->UseVisualStyleBackColor = true;
+			this->back->Click += gcnew System::EventHandler(this, &Form5::back_Click);
+			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
+			this->pictureBox2->Location = System::Drawing::Point(361, 64);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(49, 50);
+			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox2->TabIndex = 11;
+			this->pictureBox2->TabStop = false;
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(249, 64);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(53, 50);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox1->TabIndex = 10;
+			this->pictureBox1->TabStop = false;
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label3->Location = System::Drawing::Point(410, 117);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(81, 29);
+			this->label3->TabIndex = 9;
+			this->label3->Text = L"label3";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label2->Location = System::Drawing::Point(183, 117);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(81, 29);
+			this->label2->TabIndex = 8;
+			this->label2->Text = L"label2";
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label1->Location = System::Drawing::Point(291, 9);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(81, 29);
+			this->label1->TabIndex = 7;
+			this->label1->Text = L"label1";
+			this->label1->Click += gcnew System::EventHandler(this, &Form5::label1_Click);
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label6->Location = System::Drawing::Point(509, 234);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(81, 29);
+			this->label6->TabIndex = 22;
+			this->label6->Text = L"label6";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label7->Location = System::Drawing::Point(350, 234);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(81, 29);
+			this->label7->TabIndex = 21;
+			this->label7->Text = L"label7";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label5->Location = System::Drawing::Point(237, 234);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(81, 29);
+			this->label5->TabIndex = 20;
+			this->label5->Text = L"label5";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label4->Location = System::Drawing::Point(70, 234);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(81, 29);
+			this->label4->TabIndex = 19;
+			this->label4->Text = L"label4";
+			// 
+			// pictureBox5
+			// 
+			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
+			this->pictureBox5->Location = System::Drawing::Point(471, 170);
+			this->pictureBox5->Name = L"pictureBox5";
+			this->pictureBox5->Size = System::Drawing::Size(50, 50);
+			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox5->TabIndex = 18;
+			this->pictureBox5->TabStop = false;
+			// 
+			// pictureBox6
+			// 
+			this->pictureBox6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.Image")));
+			this->pictureBox6->Location = System::Drawing::Point(382, 170);
+			this->pictureBox6->Name = L"pictureBox6";
+			this->pictureBox6->Size = System::Drawing::Size(49, 50);
+			this->pictureBox6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox6->TabIndex = 17;
+			this->pictureBox6->TabStop = false;
+			// 
+			// pictureBox4
+			// 
+			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
+			this->pictureBox4->Location = System::Drawing::Point(241, 170);
+			this->pictureBox4->Name = L"pictureBox4";
+			this->pictureBox4->Size = System::Drawing::Size(50, 50);
+			this->pictureBox4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox4->TabIndex = 16;
+			this->pictureBox4->TabStop = false;
+			// 
+			// pictureBox3
+			// 
+			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
+			this->pictureBox3->Location = System::Drawing::Point(141, 170);
+			this->pictureBox3->Name = L"pictureBox3";
+			this->pictureBox3->Size = System::Drawing::Size(49, 50);
+			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox3->TabIndex = 15;
+			this->pictureBox3->TabStop = false;
+			// 
+			// Form5
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(682, 383);
+			this->Controls->Add(this->label6);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label1);
+			this->Controls->Add(this->back);
+			this->Controls->Add(this->pictureBox4);
+			this->Controls->Add(this->pictureBox3);
+			this->Controls->Add(this->pictureBox5);
+			this->Controls->Add(this->pictureBox6);
+			this->Controls->Add(this->pictureBox2);
+			this->Controls->Add(this->pictureBox1);
+			this->MaximumSize = System::Drawing::Size(700, 500);
+			this->MinimumSize = System::Drawing::Size(494, 430);
+			this->Name = L"Form5";
+			this->Text = L"Form5";
+			this->Load += gcnew System::EventHandler(this, &Form5::Form5_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
+			this->ResumeLayout(false);
+			this->PerformLayout();
+
+		}
+#pragma endregion
+	private: System::Void back_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+		if (this->Owner) {
+			this->Owner->Enabled = true;
+			this->Owner->WindowState = FormWindowState::Maximized;
+		}
+	}
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void Form5_Load(System::Object^ sender, System::EventArgs^ e) {
+	std::ifstream file("output.txt");
+	AVLTree t(file, elem);
+	AVLNode* ptr = t.getRoot();
+	label1->Text = msclr::interop::marshal_as<System::String^>(ptr->surname + "\n" + std::to_string(ptr->average_mark));
+	if (ptr->left) {
+		label2->Text = msclr::interop::marshal_as<System::String^>(ptr->left->surname + "\n" + std::to_string(ptr->left->average_mark));
+		if (ptr->left->left)
+			label4->Text = msclr::interop::marshal_as<System::String^>(ptr->left->left->surname + "\n" + std::to_string(ptr->left->left->average_mark));
+		else
+			label4->Text = "EMPTY";
+		if (ptr->left->right)
+			label5->Text = msclr::interop::marshal_as<System::String^>(ptr->left->right->surname + "\n" + std::to_string(ptr->left->right->average_mark));
+		else
+			label5->Text = "EMPTY";
+	}
+	else
+	{
+		label2->Text = "EMPTY";
+		label4->Text = "EMPTY";
+		label5->Text = "EMPTY";
+	}
+	if (ptr->right) {
+		label3->Text = msclr::interop::marshal_as<System::String^>(ptr->right->surname + "\n" + std::to_string(ptr->right->average_mark));
+		if (ptr->right->right)
+			label6->Text = msclr::interop::marshal_as<System::String^>(ptr->right->right->surname + "\n" + std::to_string(ptr->right->right->average_mark));
+		else
+			label6->Text = "EMPTY";
+		if (ptr->right->left)
+			label7->Text = msclr::interop::marshal_as<System::String^>(ptr->right->left->surname + "\n" + std::to_string(ptr->right->left->average_mark));
+		else
+			label7->Text = "EMPTY";
+	}
+	else
+	{
+		label3->Text = "EMPTY";
+		label6->Text = "EMPTY";
+		label7->Text = "EMPTY";
+	}
+	
+	
+}
+};
+}
+ 
+// D:\maket\c++\source\prackic_2023\SeekTree.h 
+#pragma once
+#include <iostream>
+#include "Student.h"
+
+class NODE
+{
+public:
+	Student* elem;
+	NODE* left;
+	NODE* right;
+
+	NODE(Student _elem, NODE* _left = nullptr, NODE* _right = nullptr)
+	{
+		elem = new Student(_elem);
+		left = _left;
+		right = _right;
+	}
+
+	~NODE()
+	{
+		left = nullptr;
+		right = nullptr;
+		delete elem;
+	}
+};
+
+using ptrNODE = NODE*;
+
+class SeekTree
+{
+private:
+	ptrNODE root;
+
+	void remov_from_node(ptrNODE& root);
+	void add_node(Student& elem, ptrNODE& ptr);
+	void print_for_level(ptrNODE& root, int level);
+	void print_for_level3(ptrNODE& root, int level);
+
+public:
+	SeekTree(std::ifstream& file, int elem);
+	SeekTree();
+	~SeekTree();
+
+	ptrNODE get_root() const;
+	void set_root(ptrNODE& _root);
+
+	void add(Student elem);
+	void delet(ptrNODE& _root);
+	double max_average();
+	void best_students();
+	void clear();
+	void print();
+	void print3();
+}; 
+// D:\maket\c++\source\prackic_2023\Student.h 
+#pragma once
+#include <fstream>
+#include <iostream>
+#include <string>
+
+class Student
+{
+private:
+	std::string name;
+	std::string surname;
+	const int n = 5;
+	int* marks = new int[n];
+
+public:
+	Student() = default;
+	Student(std::string _name, std::string _surname, int* arr, int length = 5)
+	{
+		name.reserve(21);
+		surname.reserve(21);
+		name = _name;
+		surname = _surname;
+		for (int i = 0; i < length; ++i)
+			marks[i] = arr[i];
+	}
+	Student(const Student& other);
+	Student(std::ifstream& file);
+	~Student();
+
+	std::string get_surname();
+	std::string get_name();
+	std::string get_all();
+	int get_n();
+	int* get_marks();
+
+	void readFile(std::ifstream& is);
+	void writeFile(std::ofstream& out);
+	void show();
+	double average();
+	bool is_all_marks_good();
+
+	bool operator==(Student& other);
+	bool operator!=(Student& other);
+	bool operator<(Student& other);
+	bool operator>(Student& other);
+
+	friend std::ostream& operator<<(std::ostream& out, Student& other)
+	{
+		out << other.name << ' ' << other.surname;
+		for (int i = 0; i < other.get_n(); ++i)
+			out << ' ' << other.marks[i];
+		return out;
+	}
+
+	friend std::istream& operator>>(std::istream& in, Student& other)
+	{
+		in >> other.name >> other.surname;
+		for (int i = 0; i < other.get_n(); ++i)
+			in >> other.marks[i];
+		return in;
+	}
+};
+ 
+// D:\maket\c++\source\prackic_2023\AVL_tree.cpp 
+#include "AVL_tree.h"
+
+AVLNode* AVLTree::copy(const AVLNode* node)
+{
+	AVLNode* n = nullptr;
+
+	if (node) {
+		n = new AVLNode(node->surname, node->average_mark);
+		n->right = copy(node->right);
+		n->left = copy(node->left);
+	}
+
+	return n;
+}
+
+int AVLTree::add(AVLNode*& node, Student& stud)
+{
+	int height = 0;
+
+	if (node) {
+
+		if (stud.average() > node->average_mark) {
+			height = add(node->right, stud);
+			if (height > node->hright)
+				node->hright = height;
+		}
+
+		else {
+			height = add(node->left, stud);
+			if (height > node->hleft)
+				node->hleft = height;
+		}
+		if (balance(node)) --height;
+	}
+
+	else
+		node = new AVLNode(stud.get_surname(), stud.average());
+
+	++height;
+
+	return height;
+}
+
+
+double AVLTree::removeMin(AVLNode*& start)
+{
+	double min;
+
+	if (start->left) {
+		min = removeMin(start->left);
+		start->hleft = height(start->left);
+		balance(start);
+	}
+
+	else {
+		min = start->average_mark;
+		delNode(start);
+	}
+
+	return min;
+}
+
+
+double AVLTree::removeMax(AVLNode*& start)
+{
+	double max;
+
+	if (start->right) {
+		max = removeMax(start->right);
+		start->hright = height(start->right);
+		balance(start);
+	}
+
+	else {
+		max = start->average_mark;
+		delNode(start);
+	}
+
+	return max;
+}
+
+
+bool AVLTree::findAndDel(AVLNode*& start, Student& stud)
+{
+	bool isDelete = false;
+
+	if (start) {
+
+		if (start->average_mark == stud.average() && start->surname == stud.get_surname()) {
+			delNode(start);
+			isDelete = true;
+		}
+
+		else if (stud.average() > start->average_mark && start->surname == stud.get_surname()) {
+			isDelete = findAndDel(start->right, stud);
+			start->hright = height(start->right);
+			balance(start);
+		}
+
+		else {
+			isDelete = findAndDel(start->left, stud);
+			start->hleft = height(start->left);
+			balance(start);
+		}
+	}
+
+	return isDelete;
+}
+
+
+void AVLTree::delNode(AVLNode*& node)
+{
+	if (node->right || node->left) {
+
+		if (node->hright >= node->hleft) {
+			double inf = removeMin(node->right);
+			node->hright = height(node->right);
+			node->average_mark = inf;
+			balance(node);
+		}
+
+		else {
+			double inf = removeMax(node->left);
+			node->hleft = height(node->left);
+			node->average_mark = inf;
+			balance(node);
+		}
+	}
+
+	else {
+		delete node;
+		node = nullptr;
+	}
+
+}
+
+
+int AVLTree::height(AVLNode* node)
+{
+	int result;
+
+	if (!node)
+		result = 0;
+
+	else
+		result = (node->hleft > node->hright ? node->hleft : node->hright) + 1;
+
+	return result;
+}
+
+void AVLTree::prnt(std::ostream& stream, AVLNode* node, int level)
+{
+	if (node) {
+
+		prnt(stream, node->right, level + 1);
+
+		for (int i = 0; i < level; i++)
+			stream << "   ";
+
+		stream << node->surname << ' ' << node->average_mark << '\n';
+		prnt(stream, node->left, level + 1);
+	}
+}
+
+void AVLTree::clr(AVLNode* node)
+{
+	if (node) {
+		clr(node->right);
+		clr(node->left);
+		delete node;
+	}
+}
+
+AVLTree::AVLTree(std::ifstream& file, int elem)
+{
+	root = nullptr;
+	for (int i = 0; i < elem; ++i)
+		addAVL(Student(file));
+}
+
+AVLTree::AVLTree(const AVLTree& tree)
+{
+	root = copy(tree.root);
+}
+
+
+AVLTree& AVLTree::addAVL(Student& stud)
+{
+	add(root, stud);
+	return *this;
+}
+
+
+AVLNode* AVLTree::find(Student& stud)
+{
+	AVLNode* result = nullptr;
+
+	if (root) {
+
+		AVLNode* p = root;
+
+		while (p && !result) {
+
+			if (p->average_mark == stud.average() && p->surname == stud.get_surname()) {
+				result = p;
+			}
+
+			else {
+				if (stud.average() > p->average_mark) p = p->right;
+				else  p = p->left;
+			}
+		}
+	}
+
+	return result;
+}
+
+bool AVLTree::deleteNode(Student& stud)
+{
+	return findAndDel(root, stud);
+}
+
+void AVLTree::rightTurn(AVLNode*& node)
+{
+	AVLNode* p = node->left;
+	node->left = node->left->right;
+	p->right = node;
+	node = p;
+	node->right->hleft = height(node->right->left);
+	node->hright = height(node->right);
+}
+
+
+void AVLTree::leftTurn(AVLNode*& node)
+{
+	AVLNode* p = node->right;
+	node->right = node->right->left;
+	p->left = node;
+	node = p;
+	node->left->hright = height(node->left->right);
+	node->hleft = height(node->left);
+}
+
+
+void AVLTree::BigLeftTurn(AVLNode*& node)
+{
+	rightTurn(node->right);
+	leftTurn(node);
+}
+
+void AVLTree::BigRightTurn(AVLNode*& node)
+{
+	leftTurn(node->left);
+	rightTurn(node);
+}
+
+bool AVLTree::balance(AVLNode*& node)
+{
+	bool isBalanced = true;
+
+	if (node->hleft - node->hright > 1) {
+
+		if (node->left->hright > node->left->hleft)
+			BigRightTurn(node);
+		else
+			rightTurn(node);
+	}
+
+	else if (node->hright - node->hleft > 1) {
+
+		if (node->right->hleft > node->right->hright)
+			BigLeftTurn(node);
+		else
+			leftTurn(node);
+	}
+
+	else
+		isBalanced = false;
+
+	return isBalanced;
+}
+
+
+
+AVLTree& AVLTree::AVLfromStream(std::istream& stream, int n)
+{
+	Student stud;
+	int i = 0;
+
+	while (i<n && stream >> stud) {
+		add(root, stud);
+		++i;
+	}
+
+	return *this;
+}
+
+
+AVLTree& AVLTree::AVLfromFile(std::ifstream& file)
+{
+	if (file) {
+
+		while (!file.eof()) {
+			Student stud(file);
+			add(root, stud);
+		}
+	}
+
+	else
+		std::cout << "File empty!\n";
+
+	return *this;
+}
+
+
+void AVLTree::print(std::ostream& stream)
+{
+	if (root)
+		prnt(stream, root);
+
+	else
+		stream << "Tree is empty";
+} 
+// D:\maket\c++\source\prackic_2023\Dynamic_list_2.cpp 
+#include "Dynamic_list_2.h"
+#include <functional>
+
+ptrNode find_place(ptrNode begin, Student& stud)
+{
+	ptrNode p = begin;
+
+	if (stud.is_all_marks_good())
+	{
+		while (p->marks_sign && p->next)
+			p = p->next;
+	}
+
+	return p;
+}
+
+DLIST::DLIST(const char* file_name)
+{
+	std::ifstream file(file_name);
+	Student stud(file);
+	ptrNode place;
+	first_Node(stud);
+
+	while (!file.eof()) {
+
+		Student stud(file);
+		place = find_place(begin, stud);
+
+		if (place && stud.is_all_marks_good()) {
+
+			if (!place->marks_sign)
+				add_before(place, stud);
+			else
+				add_after(place, stud);
+		}
+
+		else
+			add_after(end, stud);
+	}
+
+	file.close();
+}
+
+//--------------------------------------------task3----------------------------------------------
+ptrNode find_place_alphabet(ptrNode begin, Student& stud)
+{
+	ptrNode p = begin;
+	std::string surname = stud.get_surname();
+
+	while (p->next && p->surname > surname)
+		p = p->next;
+
+	return p;
+}
+
+DLIST::DLIST(std::ifstream& file)
+{
+	Student stud(file);
+	ptrNode place;
+	first_Node(stud);
+
+	while (!file.eof()) {
+
+		Student stud(file);
+		std::string surname = stud.get_surname();
+		place = find_place_alphabet(begin, stud);
+
+		if (place) {
+
+			if (place->surname < surname)
+				add_after(place, stud);
+			else
+				add_before(place, stud);
+		}
+
+		else
+			add_after(end, stud);
+	}
+
+	file.close();
+}
+DLIST::DLIST(const char* file_name, int n)
+{
+	std::ifstream file(file_name);
+	Student stud(file);
+	ptrNode place;
+	first_Node(stud);
+
+	for(int i=0;i<n-1;++i) {
+
+		Student stud(file);
+		place = find_place(begin, stud);
+
+		if (place && stud.is_all_marks_good()) {
+
+			if (!place->marks_sign)
+				add_before(place, stud);
+			else
+				add_after(place, stud);
+		}
+
+		else
+			add_after(end, stud);
+	}
+
+	file.close();
+}
+DLIST::DLIST(std::ifstream& file, int n)
+{
+	Student stud(file);
+	ptrNode place;
+	first_Node(stud);
+
+	for(int i=0;i<n-1;++i) {
+
+		Student stud(file);
+		std::string surname = stud.get_surname();
+		place = find_place_alphabet(begin, stud);
+
+		if (place) {
+
+			if (place->surname > surname)
+				add_after(place, stud);
+			else
+				add_before(place, stud);
+		}
+
+		else
+			add_after(end, stud);
+	}
+
+	file.close();
+}
+//-------------------------------------------------------------------------------------------------
+void DLIST::first_Node(Student& stud)
+{
+	begin = new Node(stud.get_surname(), stud.average(), stud.is_all_marks_good());
+	end = begin;
+	size = 1;
+}
+
+bool DLIST::empty()
+{
+	return begin == nullptr;
+}
+
+void DLIST::add_after(ptrNode ptr, Student& stud)
+{
+	ptrNode p = new Node(stud.get_surname(), stud.average(), stud.is_all_marks_good(), ptr->next, ptr);
+
+	if (ptr == end)
+		end = p;
+	else
+		ptr->next->prev = p;
+
+	ptr->next = p;
+	++size;
+}
+
+void DLIST::add_before(ptrNode ptr, Student& stud)
+{
+	ptrNode p = new Node(stud.get_surname(), stud.average(), stud.is_all_marks_good(), ptr, ptr->prev);
+
+	if (ptr == begin)
+		begin = p;
+	else
+		ptr->prev->next = p;
+
+	ptr->prev = p;
+	++size;
+}
+
+void DLIST::print()
+{
+	ptrNode ptr = begin;
+
+	while (ptr) {
+		std::cout << ptr->surname << ' ' << ptr->average_mark;
+		std::cout << '\n';
+		ptr = ptr->next;
+	}
+} 
+// D:\maket\c++\source\prackic_2023\ficha_1.cpp 
+#include "ficha_1.h"
+
+ 
+// D:\maket\c++\source\prackic_2023\ficha_2.cpp 
+#include "ficha_2.h"
+
+ 
+// D:\maket\c++\source\prackic_2023\ficha_3.cpp 
+#include "ficha_3.h"
+
+ 
+// D:\maket\c++\source\prackic_2023\ficha_4.cpp 
+#include "ficha_4.h"
+
+ 
+// D:\maket\c++\source\prackic_2023\Form1.cpp 
+#include "Form1.h"
+ 
+// D:\maket\c++\source\prackic_2023\Form2.cpp 
+#include "Form2.h"
+
+ 
+// D:\maket\c++\source\prackic_2023\Form3.cpp 
+#include "Form3.h"
+
+ 
+// D:\maket\c++\source\prackic_2023\Form4.cpp 
+#include "Form4.h"
+
+ 
+// D:\maket\c++\source\prackic_2023\Form5.cpp 
+#include "Form5.h"
+
+ 
+// D:\maket\c++\source\prackic_2023\SeekTree.cpp 
+#include "SeekTree.h"
+
+void SeekTree::remov_from_node(ptrNODE& root)
+{
+	if (root) {
+		remov_from_node(root->left);
+		remov_from_node(root->right);
+		delete root;
+	}
+}
+
+void SeekTree::add_node(Student& elem, ptrNODE& ptr)
+{
+	if (ptr == nullptr)
+		ptr = new NODE(elem);
+
+	else
+		if (elem < *ptr->elem)
+			add_node(elem, ptr->left);
+		else
+			add_node(elem, ptr->right);
+}
+
+void SeekTree::print_for_level(ptrNODE& root, int level)
+{
+	if (root) {
+
+		std::string surname = root->elem->get_surname();
+
+		print_for_level(root->right, level + 1);
+
+		for (int i = 0; i < level; ++i)
+			std::cout << "    ";
+
+		std::cout << surname << ' ' << root->elem->average() << '\n';
+		print_for_level(root->left, level + 1);
+	}
+}
+
+void SeekTree::print_for_level3(ptrNODE& root, int level)
+{
+	if (root && level != 3) {
+
+		std::string surname = root->elem->get_surname();
+
+		print_for_level3(root->right, level + 1);
+
+		for (int i = 0; i < level; ++i)
+			std::cout << "    ";
+
+		std::cout << surname << ' ' << root->elem->average() << '\n';
+		print_for_level3(root->left, level + 1);
+	}
+}
+
+SeekTree::SeekTree(std::ifstream& file, int elem)
+{
+	root = nullptr;
+	for (int i = 0; i < elem; ++i)
+		add(Student(file));
+}
+
+SeekTree::SeekTree()
+{
+	root = nullptr;
+}
+
+SeekTree::~SeekTree()
+{
+	delet(root);
+}
+
+ptrNODE SeekTree::get_root() const
+{
+	return root;
+}
+
+void SeekTree::set_root(ptrNODE& _root)
+{
+	root = _root;
+}
+
+void SeekTree::add(Student elem)
+{
+	add_node(elem, root);
+}
+
+void SeekTree::delet(ptrNODE& _root)
+{
+	remov_from_node(_root);
+}
+
+double SeekTree::max_average()
+{
+	double maxAverage;
+	ptrNODE begin = root;
+
+	while (begin->right)
+		begin = begin->right;
+
+	maxAverage = begin->elem->average();
+
+	return maxAverage;
+}
+
+void SeekTree::best_students()
+{
+	double maxAverage = max_average();
+	ptrNODE begin = root;
+	std::string surname;
+
+	while (begin) {
+
+		if (begin->elem->average() == maxAverage) {
+			surname = begin->elem->get_surname();
+			std::cout << surname << ' ' << begin->elem->average() << '\n';
+		}
+
+		begin = begin->right;
+	}
+}
+
+void SeekTree::clear()
+{
+	remov_from_node(root);
+}
+
+void SeekTree::print()
+{
+	print_for_level(root, 0);
+}
+
+void SeekTree::print3()
+{
+	print_for_level3(root, 0);
+} 
+// D:\maket\c++\source\prackic_2023\Source.cpp 
+#include "Form1.h"
+
+#include <Windows.h>
+#include "SeekTree.h"
+
+using namespace prackic2023;
+
+//void main() {
+//	std::ifstream f("output.txt");
+//	DLIST l("output.txt", 7);
+//	l.print();
+//	std::cin.get();
+//}
+
+int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
+    Application::EnableVisualStyles();
+    Application::SetCompatibleTextRenderingDefault(false);
+    Application::Run(gcnew TopSoft);
+    return 0;
+} 
+// D:\maket\c++\source\prackic_2023\Student.cpp 
+#include "Student.h"
+
+Student::Student(const Student& other)
+{
+	name.reserve(21);
+	surname.reserve(21);
+	name = other.name;
+	surname = other.surname;
+
+	for (int i = 0; i < n; ++i)
+		marks[i] = other.marks[i];
+}
+
+Student::Student(std::ifstream& file)
+{
+	name.reserve(21);
+	surname.reserve(21);
+	file >> name;
+	file >> surname;
+
+	for (int i = 0; i < n; ++i)
+		file >> marks[i];
+
+	file.ignore(32000, '\n');
+}
+
+Student::~Student()
+{
+	delete[] marks;
+}
+
+std::string Student::get_surname()
+{
+	return surname;
+}
+
+std::string Student::get_name()
+{
+	return name;
+}
+
+std::string Student::get_all()
+{
+	std::string all = name + " " + surname;
+	for (int i = 0; i < n; ++i)
+		all += " " + std::to_string(marks[i]);
+	return all;
+}
+
+int Student::get_n()
+{
+	return n;
+}
+
+int* Student::get_marks()
+{
+	return marks;
+}
+
+void Student::readFile(std::ifstream& is)
+{
+	name.reserve(21);
+	surname.reserve(21);
+	is >> name;
+	is >> surname;
+
+	for (int i = 0; i < n; ++i)
+		is >> marks[i];
+
+	is.ignore(32000, '\n');
+}
+
+void Student::writeFile(std::ofstream& out)
+{
+	out << name << '\n';
+	out << surname << '\n';
+
+	for (int i = 0; i < n; ++i)
+		out << marks[i] << ' ';
+}
+
+void Student::show()
+{
+	std::cout << name << ' ' << surname << '\n';
+
+	for (int i = 0; i < n; ++i)
+		std::cout << marks[i] << ' ';
+}
+
+double Student::average()
+{
+	double average = 0;
+
+	for (int i = 0; i < n; ++i)
+		average += marks[i];
+
+	return average / n;
+}
+
+bool Student::is_all_marks_good()
+{
+	bool flag = true;
+	int i = 0;
+
+	while (i < n && flag) {
+		if (marks[i] != 4)
+			flag = false;
+		++i;
+	}
+
+	return flag;
+}
+
+bool Student::operator==(Student& other)
+{
+	return this->average() == other.average();
+}
+
+bool Student::operator!=(Student& other)
+{
+	return this->average() != other.average();
+}
+
+bool Student::operator<(Student& other)
+{
+	return this->average() < other.average();
+}
+
+bool Student::operator>(Student& other)
+{
+	return this->average() > other.average();
+}
+ 
+// D:\maket\c++\source\prackic_2023\x64\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp 
+#using <mscorlib.dll>
+[assembly: System::Runtime::Versioning::TargetFrameworkAttribute(L".NETFramework,Version=v4.7.2", FrameworkDisplayName=L".NET Framework 4.7.2")];
+ 
