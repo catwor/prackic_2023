@@ -13,8 +13,12 @@ private:
 
 public:
 	Student() = default;
-	Student(std::string _name, std::string _surname, int* arr, int length = 5) : name(_name), surname(_surname)
+	Student(std::string _name, std::string _surname, int* arr, int length = 5)
 	{
+		name.reserve(21);
+		surname.reserve(21);
+		name = _name;
+		surname = _surname;
 		for (int i = 0; i < length; ++i)
 			marks[i] = arr[i];
 	}

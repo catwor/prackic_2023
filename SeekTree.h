@@ -37,6 +37,7 @@ private:
 	void print_for_level3(ptrNODE& root, int level);
 
 public:
+	SeekTree(std::ifstream& file, int elem);
 	SeekTree();
 	~SeekTree();
 

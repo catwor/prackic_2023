@@ -2,6 +2,8 @@
 
 Student::Student(const Student& other)
 {
+	name.reserve(21);
+	surname.reserve(21);
 	name = other.name;
 	surname = other.surname;
 
@@ -11,6 +13,8 @@ Student::Student(const Student& other)
 
 Student::Student(std::ifstream& file)
 {
+	name.reserve(21);
+	surname.reserve(21);
 	file >> name;
 	file >> surname;
 
@@ -55,6 +59,8 @@ int* Student::get_marks()
 
 void Student::readFile(std::ifstream& is)
 {
+	name.reserve(21);
+	surname.reserve(21);
 	is >> name;
 	is >> surname;
 

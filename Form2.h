@@ -92,18 +92,9 @@ namespace prackic2023 {
 			this->MinimumSize = System::Drawing::Size(494, 430);
 			this->Name = L"Form2";
 			this->Text = L"Form2";
+			this->Load += gcnew System::EventHandler(this, &Form2::Form2_Load);
 			this->ResumeLayout(false);
-			//
-			//startListBox
-			//
-			std::ifstream out("output.txt");
-			DLIST stud_list(out, elem);
-			out.close();
-			ptrNode start = stud_list.get_begin();
-			while (start != stud_list.get_end()) {
-				listBox1->Items->Add(msclr::interop::marshal_as<System::String^>(start->surname +" "+ std::to_string(start->average_mark)));
-				++start;
-			}
+
 		}
 #pragma endregion
 	private: System::Void back_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -114,6 +105,16 @@ namespace prackic2023 {
 		}
 	}
 	private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void Form2_Load(System::Object^ sender, System::EventArgs^ e) {
+		std::ifstream file("output.txt");
+		DLIST tmp(file, elem-1);
+		file.close();
+		ptrNode ptr = tmp.get_begin();
+		while (ptr) {
+			listBox1->Items->Add(msclr::interop::marshal_as<System::String^>(ptr->surname));
+			ptr=ptr->next;
+		}
 	}
 	};
 }

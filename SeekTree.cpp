@@ -53,6 +53,13 @@ void SeekTree::print_for_level3(ptrNODE& root, int level)
 	}
 }
 
+SeekTree::SeekTree(std::ifstream& file, int elem)
+{
+	root = nullptr;
+	for (int i = 0; i < elem; ++i)
+		add(Student(file));
+}
+
 SeekTree::SeekTree()
 {
 	root = nullptr;

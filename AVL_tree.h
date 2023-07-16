@@ -43,6 +43,7 @@ private:
 
 public:
 	AVLTree() :root(nullptr) {};
+	AVLTree(std::ifstream& file, int elem);
 	AVLTree(const AVLTree& tree);
 	~AVLTree() { clr(root); };
 

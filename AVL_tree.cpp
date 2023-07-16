@@ -171,6 +171,13 @@ void AVLTree::clr(AVLNode* node)
 	}
 }
 
+AVLTree::AVLTree(std::ifstream& file, int elem)
+{
+	root = nullptr;
+	for (int i = 0; i < elem; ++i)
+		addAVL(Student(file));
+}
+
 AVLTree::AVLTree(const AVLTree& tree)
 {
 	root = copy(tree.root);

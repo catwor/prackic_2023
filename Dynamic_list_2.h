@@ -11,7 +11,7 @@ struct Node
 	bool marks_sign; //true, if all marks == 4
 	Node* next, * prev;
 
-	Node(std::string surname, double average_mark, bool marks_sign, Node* next = nullptr, Node* prev = nullptr) :surname(surname), average_mark(average_mark), marks_sign(marks_sign), next(next), prev(prev) {}
+	Node(std::string _surname, double average_mark, bool marks_sign, Node* next = nullptr, Node* prev = nullptr) :average_mark(average_mark), marks_sign(marks_sign), next(next), prev(prev) { surname.reserve(21); surname = _surname; }
 	~Node()
 	{
 		next = nullptr;
