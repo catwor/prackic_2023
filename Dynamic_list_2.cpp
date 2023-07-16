@@ -47,7 +47,7 @@ ptrNode find_place_alphabet(ptrNode begin, Student& stud)
 	ptrNode p = begin;
 	std::string surname = stud.get_surname();
 
-	while (p->next && p->surname < surname)
+	while (p->next && p->surname > surname)
 		p = p->next;
 
 	return p;
@@ -86,7 +86,7 @@ DLIST::DLIST(const char* file_name, int n)
 	ptrNode place;
 	first_Node(stud);
 
-	for(int i=0;i<n;++i) {
+	for(int i=0;i<n-1;++i) {
 
 		Student stud(file);
 		place = find_place(begin, stud);
@@ -111,7 +111,7 @@ DLIST::DLIST(std::ifstream& file, int n)
 	ptrNode place;
 	first_Node(stud);
 
-	for(int i=0;i<n;++i) {
+	for(int i=0;i<n-1;++i) {
 
 		Student stud(file);
 		std::string surname = stud.get_surname();
@@ -119,7 +119,7 @@ DLIST::DLIST(std::ifstream& file, int n)
 
 		if (place) {
 
-			if (place->surname < surname)
+			if (place->surname > surname)
 				add_after(place, stud);
 			else
 				add_before(place, stud);

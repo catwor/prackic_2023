@@ -211,11 +211,11 @@ namespace prackic2023 {
 			// ficha_1
 			// 
 			this->ficha_1->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
-			this->ficha_1->Location = System::Drawing::Point(353, 163);
+			this->ficha_1->Location = System::Drawing::Point(353, 164);
 			this->ficha_1->Name = L"ficha_1";
 			this->ficha_1->Size = System::Drawing::Size(83, 24);
 			this->ficha_1->TabIndex = 9;
-			this->ficha_1->Text = L"list_1";
+			this->ficha_1->Text = L"list Alpha";
 			this->ficha_1->UseVisualStyleBackColor = true;
 			this->ficha_1->Click += gcnew System::EventHandler(this, &TopSoft::button1_Click);
 			// 
@@ -244,11 +244,11 @@ namespace prackic2023 {
 			// ficha_2
 			// 
 			this->ficha_2->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
-			this->ficha_2->Location = System::Drawing::Point(353, 210);
+			this->ficha_2->Location = System::Drawing::Point(353, 214);
 			this->ficha_2->Name = L"ficha_2";
 			this->ficha_2->Size = System::Drawing::Size(83, 24);
 			this->ficha_2->TabIndex = 28;
-			this->ficha_2->Text = L"list_2";
+			this->ficha_2->Text = L"list marks";
 			this->ficha_2->UseVisualStyleBackColor = true;
 			this->ficha_2->Click += gcnew System::EventHandler(this, &TopSoft::button2_Click_1);
 			// 

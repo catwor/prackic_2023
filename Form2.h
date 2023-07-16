@@ -80,6 +80,7 @@ namespace prackic2023 {
 			this->listBox1->Name = L"listBox1";
 			this->listBox1->Size = System::Drawing::Size(440, 308);
 			this->listBox1->TabIndex = 3;
+			this->listBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Form2::listBox1_SelectedIndexChanged);
 			// 
 			// Form2
 			// 
@@ -110,9 +111,11 @@ namespace prackic2023 {
 		file.close();
 		ptrNode ptr = tmp.get_begin();
 		while (ptr) {
-			listBox1->Items->Add(msclr::interop::marshal_as<System::String^>(ptr->surname));
+			listBox1->Items->Add(msclr::interop::marshal_as<System::String^>(ptr->surname +" "+std::to_string(ptr->average_mark)));
 			ptr=ptr->next;
 		}
 	}
-	};
+	private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }

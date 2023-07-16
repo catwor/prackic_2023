@@ -7,8 +7,8 @@ using namespace prackic2023;
 
 //void main() {
 //	std::ifstream f("output.txt");
-//	SeekTree t(f, 6);
-//	t.print();
+//	DLIST l("output.txt", 7);
+//	l.print();
 //	std::cin.get();
 //}
 
