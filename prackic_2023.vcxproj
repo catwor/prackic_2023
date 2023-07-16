@@ -115,6 +115,10 @@
     <ClCompile Include="AVL_tree.cpp" />
     <ClCompile Include="Dynamic_list_2.cpp" />
     <ClCompile Include="Form1.cpp" />
+    <ClCompile Include="Form2.cpp" />
+    <ClCompile Include="Form3.cpp" />
+    <ClCompile Include="Form4.cpp" />
+    <ClCompile Include="Form5.cpp" />
     <ClCompile Include="SeekTree.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Student.cpp" />
@@ -123,6 +127,18 @@
     <ClInclude Include="AVL_tree.h" />
     <ClInclude Include="Dynamic_list_2.h" />
     <ClInclude Include="Form1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Form2.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Form3.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Form4.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Form5.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="SeekTree.h" />
@@ -138,6 +154,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form4.resx">
+      <DependentUpon>Form4.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form5.resx">
+      <DependentUpon>Form5.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

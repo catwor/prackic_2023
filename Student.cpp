@@ -20,6 +20,10 @@ Student::Student(std::ifstream& file)
 	file.ignore(32000, '\n');
 }
 
+Student::Student(std::string& other)
+{
+}
+
 Student::~Student()
 {
 	delete[] marks;

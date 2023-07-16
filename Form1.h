@@ -1,6 +1,10 @@
 #pragma once
 #include <cliext/algorithm>
 #include <msclr/marshal_cppstd.h>
+#include "Form2.h"
+#include "Form3.h"
+#include "Form4.h"
+#include "Form5.h"
 #include "AVL_tree.h"
 #include "Dynamic_list_2.h"
 #include "SeekTree.h"
@@ -11,9 +15,9 @@ namespace prackic2023 {
 	using namespace System::ComponentModel;
 	using namespace System::IO;
 	using namespace System::Collections;
-	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Windows::Forms;
 
 	/// <summary>
 	/// Сводка для TopSoft
@@ -49,7 +53,7 @@ namespace prackic2023 {
 
 
 	private: System::Windows::Forms::Button^ but_fix;
-	public: System::Windows::Forms::ListView^ list;
+
 	private:
 
 	private: System::Windows::Forms::Button^ ficha_2;
@@ -83,6 +87,8 @@ namespace prackic2023 {
 	private: System::Windows::Forms::TextBox^ Number_stud;
 
 	private: System::Windows::Forms::Button^ save_file;
+	private: System::Windows::Forms::ListBox^ list;
+
 
 	public:
 	private: System::ComponentModel::IContainer^ components;
@@ -189,7 +195,6 @@ namespace prackic2023 {
 			this->ficha_1 = (gcnew System::Windows::Forms::Button());
 			this->text_name = (gcnew System::Windows::Forms::TextBox());
 			this->but_fix = (gcnew System::Windows::Forms::Button());
-			this->list = (gcnew System::Windows::Forms::ListView());
 			this->ficha_2 = (gcnew System::Windows::Forms::Button());
 			this->ficha_3 = (gcnew System::Windows::Forms::Button());
 			this->ficha_4 = (gcnew System::Windows::Forms::Button());
@@ -203,6 +208,7 @@ namespace prackic2023 {
 			this->clear = (gcnew System::Windows::Forms::Button());
 			this->Number_stud = (gcnew System::Windows::Forms::TextBox());
 			this->save_file = (gcnew System::Windows::Forms::Button());
+			this->list = (gcnew System::Windows::Forms::ListBox());
 			this->SuspendLayout();
 			// 
 			// ficha_1
@@ -212,7 +218,7 @@ namespace prackic2023 {
 			this->ficha_1->Name = L"ficha_1";
 			this->ficha_1->Size = System::Drawing::Size(83, 24);
 			this->ficha_1->TabIndex = 9;
-			this->ficha_1->Text = L"button1";
+			this->ficha_1->Text = L"list_1";
 			this->ficha_1->UseVisualStyleBackColor = true;
 			this->ficha_1->Click += gcnew System::EventHandler(this, &TopSoft::button1_Click);
 			// 
@@ -238,18 +244,6 @@ namespace prackic2023 {
 			this->but_fix->UseVisualStyleBackColor = true;
 			this->but_fix->Click += gcnew System::EventHandler(this, &TopSoft::button5_Click);
 			// 
-			// list
-			// 
-			this->list->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
-			this->list->HideSelection = false;
-			this->list->Location = System::Drawing::Point(133, 117);
-			this->list->Name = L"list";
-			this->list->Size = System::Drawing::Size(198, 243);
-			this->list->TabIndex = 23;
-			this->list->UseCompatibleStateImageBehavior = false;
-			this->list->View = System::Windows::Forms::View::List;
-			this->list->SelectedIndexChanged += gcnew System::EventHandler(this, &TopSoft::listView1_SelectedIndexChanged);
-			// 
 			// ficha_2
 			// 
 			this->ficha_2->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
@@ -257,7 +251,7 @@ namespace prackic2023 {
 			this->ficha_2->Name = L"ficha_2";
 			this->ficha_2->Size = System::Drawing::Size(83, 24);
 			this->ficha_2->TabIndex = 28;
-			this->ficha_2->Text = L"button2";
+			this->ficha_2->Text = L"list_2";
 			this->ficha_2->UseVisualStyleBackColor = true;
 			this->ficha_2->Click += gcnew System::EventHandler(this, &TopSoft::button2_Click_1);
 			// 
@@ -268,7 +262,7 @@ namespace prackic2023 {
 			this->ficha_3->Name = L"ficha_3";
 			this->ficha_3->Size = System::Drawing::Size(83, 24);
 			this->ficha_3->TabIndex = 29;
-			this->ficha_3->Text = L"button3";
+			this->ficha_3->Text = L"SeekTree";
 			this->ficha_3->UseVisualStyleBackColor = true;
 			this->ficha_3->Click += gcnew System::EventHandler(this, &TopSoft::button3_Click);
 			// 
@@ -279,7 +273,7 @@ namespace prackic2023 {
 			this->ficha_4->Name = L"ficha_4";
 			this->ficha_4->Size = System::Drawing::Size(83, 24);
 			this->ficha_4->TabIndex = 30;
-			this->ficha_4->Text = L"button4";
+			this->ficha_4->Text = L"AVLTree";
 			this->ficha_4->UseVisualStyleBackColor = true;
 			this->ficha_4->Click += gcnew System::EventHandler(this, &TopSoft::button4_Click);
 			// 
@@ -392,11 +386,22 @@ namespace prackic2023 {
 			this->save_file->UseVisualStyleBackColor = true;
 			this->save_file->Click += gcnew System::EventHandler(this, &TopSoft::save_file_Click_1);
 			// 
+			// list
+			// 
+			this->list->FormattingEnabled = true;
+			this->list->ItemHeight = 16;
+			this->list->Location = System::Drawing::Point(133, 117);
+			this->list->Name = L"list";
+			this->list->Size = System::Drawing::Size(198, 212);
+			this->list->TabIndex = 45;
+			this->list->SelectedIndexChanged += gcnew System::EventHandler(this, &TopSoft::list_SelectedIndexChanged);
+			// 
 			// TopSoft
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(476, 383);
+			this->Controls->Add(this->list);
 			this->Controls->Add(this->save_file);
 			this->Controls->Add(this->clear);
 			this->Controls->Add(this->mark_5);
@@ -409,7 +414,6 @@ namespace prackic2023 {
 			this->Controls->Add(this->ficha_4);
 			this->Controls->Add(this->ficha_3);
 			this->Controls->Add(this->ficha_2);
-			this->Controls->Add(this->list);
 			this->Controls->Add(this->but_fix);
 			this->Controls->Add(this->text_name);
 			this->Controls->Add(this->Number_stud);
@@ -440,6 +444,10 @@ private: System::Void Form1_Load(System::Object^ sender, System::EventArgs^ e) {
 	mark_3->SelectedIndex = 0;
 	mark_4->SelectedIndex = 0;
 	mark_5->SelectedIndex = 0;
+	ficha_1->Enabled = false;
+	ficha_2->Enabled = false;
+	ficha_3->Enabled = false;
+	ficha_4->Enabled = false;
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 }
@@ -461,8 +469,6 @@ private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e
 }
 
 
-private: System::Void listView1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-}
 private: System::Void comboBox4_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void comboBox3_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -474,24 +480,39 @@ private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, Sys
 private: System::Void textBox3_TextChanged_1(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Enabled = false;
+	Form5^ f5 = gcnew Form5();
+	f5->Owner = this;
+	f5->Show();
 }
 private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Enabled = false;
+	Form4^ f4 = gcnew Form4();
+	f4->Owner = this;
+	f4->Show();
 }
 private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	this->Enabled = false;
+	Form3^ f3 = gcnew Form3();
+	f3->Owner = this;
+	f3->Show();
 }
 private: System::Void comboBox5_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void textBox2_TextChanged_1(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Enabled = false;
+	Form2^ f2 = gcnew Form2();
+	f2->Owner = this;
+	f2->Show();
 }
 private: System::Void but_add_Click(System::Object^ sender, System::EventArgs^ e) {
-	if (!Number_stud->Enabled && !String::IsNullOrWhiteSpace(text_name->Text) && !String::IsNullOrWhiteSpace(text_surename->Text)){
+	if (!Number_stud->Enabled && !String::IsNullOrWhiteSpace(text_name->Text) && !String::IsNullOrWhiteSpace(text_surename->Text)) {
 		if (Convert::ToInt32(Number_stud->Text) > list->Items->Count) {
 			String^ Item_FIO = text_name->Text + " " + text_surename->Text + " ";
-			String^ Item_marks = mark_1->Text + " " + mark_2->Text + " " + mark_3->Text + " " + mark_4->Text + " "+mark_5->Text;
-			ListViewItem^ newItem = gcnew ListViewItem(Item_FIO+" "+Item_marks);
-			list->Items->Add(newItem);
+			String^ Item_marks = mark_1->Text + " " + mark_2->Text + " " + mark_3->Text + " " + mark_4->Text + " " + mark_5->Text;
+			list->Items->Add(Item_FIO + " " + Item_marks);
 		}
 		else
 			MessageBox::Show("A lot of stud", "Message of ERROR");
@@ -512,14 +533,19 @@ private: System::Void save_file_Click(System::Object^ sender, System::EventArgs^
 }
 private: System::Void save_file_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	if (!but_fix->Enabled) {
+		ficha_1->Enabled = true;
+		ficha_2->Enabled = true;
+		ficha_3->Enabled = true;
+		ficha_4->Enabled = true;
 		String^ filePath = "output.txt";
 		StreamWriter^ writer = gcnew StreamWriter(filePath);
-		for each(ListViewItem ^ item in list->Items) {
-			writer->WriteLine(Convert::ToString(item->Text));
-			writer->WriteLine("---------------");
+		for each(Object ^ item in list->Items) {
+			writer->WriteLine(item->ToString());
 		}
 		writer->Close();
 	}
 }
+private: System::Void list_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
 };
 }
