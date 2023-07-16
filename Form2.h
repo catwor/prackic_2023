@@ -1,5 +1,5 @@
 #pragma once
-#include <msclr/marshal_cppstd.h>
+#include <cliext/algorithm>
 #include "Dynamic_list_2.h"
 
 namespace prackic2023 {
@@ -37,7 +37,6 @@ namespace prackic2023 {
 			}
 		}
 	private: System::Windows::Forms::Button^ back;
-	private: System::Windows::Forms::ListBox^ listBox1;
 	public:
 		property System::Windows::Forms::Form^ Owner;
 	public:
@@ -48,7 +47,7 @@ namespace prackic2023 {
 		/// <summary>
 		/// Обязательная переменная конструктора.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -58,35 +57,23 @@ namespace prackic2023 {
 		void InitializeComponent(void)
 		{
 			this->back = (gcnew System::Windows::Forms::Button());
-			this->listBox1 = (gcnew System::Windows::Forms::ListBox());
 			this->SuspendLayout();
 			// 
 			// back
 			// 
-			this->back->Location = System::Drawing::Point(1, 338);
+			this->back->Location = System::Drawing::Point(0, 339);
 			this->back->Name = L"back";
 			this->back->Size = System::Drawing::Size(112, 46);
-			this->back->TabIndex = 0;
+			this->back->TabIndex = 1;
 			this->back->Text = L"back";
 			this->back->UseVisualStyleBackColor = true;
 			this->back->Click += gcnew System::EventHandler(this, &Form2::back_Click);
-			// 
-			// listBox1
-			// 
-			this->listBox1->FormattingEnabled = true;
-			this->listBox1->ItemHeight = 16;
-			this->listBox1->Location = System::Drawing::Point(13, 13);
-			this->listBox1->Name = L"listBox1";
-			this->listBox1->Size = System::Drawing::Size(440, 308);
-			this->listBox1->TabIndex = 1;
-			this->listBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &Form2::listBox1_SelectedIndexChanged);
 			// 
 			// Form2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(476, 383);
-			this->Controls->Add(this->listBox1);
 			this->Controls->Add(this->back);
 			this->MaximumSize = System::Drawing::Size(494, 430);
 			this->MinimumSize = System::Drawing::Size(494, 430);
@@ -103,8 +90,6 @@ namespace prackic2023 {
 			this->Owner->Enabled = true;
 			this->Owner->WindowState = FormWindowState::Maximized;
 		}
-	}
-	private: System::Void listBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void Form2_Load(System::Object^ sender, System::EventArgs^ e) {
 		std::ifstream file("output.txt");
